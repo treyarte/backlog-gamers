@@ -1,0 +1,17 @@
+.nav {
+    background-color: #222222;
+    width: 100%;
+    height: var(--navbar-height);
+    display: flex;
+    padding: 0 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-link {    
+    z-index: 100;
+    width: 230px;    
+}
+.logo-link img {
+    width: 100%;
+}

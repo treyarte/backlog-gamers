@@ -1,0 +1,39 @@
+.hamburger {
+    width: 30px;
+    position: relative;
+    z-index: 100;
+    cursor: pointer;
+}
+
+/*
+    adds the three hamburger lines
+*/
+.hamburger:after, 
+.hamburger:before,
+.bar {
+    content: '';
+	display: block;
+	width: 100%;
+	height: 3px;
+	background-color: #FFF;
+	margin: 6px 0px;
+	transition: 0.4s;
+}
+
+/*
+    rotates the top and bottom bars to cross
+*/
+.hamburger.is-open:before {
+    transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.hamburger.is-open:after {
+    transform: rotate(45deg) translate(-8px, -8px);
+}
+
+/*
+    hides the middle bar when the other two bars cross
+*/
+.hamburger.is-open .bar {
+    opacity: 0;
+}
