@@ -27,15 +27,7 @@ export default function NavMobile(props:MobileNavProps) {
    return (
     <nav className={`${styles["mobile-nav"]} ${getActiveStyle()}`}>
         <ul className={styles["mobile-nav-links"]}>
-            <li>                        
-                <a 
-                    onClick={toggleMobileMenu} 
-                    href="#hero"
-                >
-                    Home
-                </a>
-            </li>
-            <li className='marker:text-portfolio-orange hover:text-portfolio-orange'>
+            <li>
                 <a 
                     onClick={toggleMobileMenu} 
                     href="#about"
@@ -43,7 +35,7 @@ export default function NavMobile(props:MobileNavProps) {
                     News Feed
                 </a>
             </li>
-            <li className='marker:text-portfolio-orange hover:text-portfolio-orange'>
+            <li>
                 <a 
                     onClick={toggleMobileMenu} 
                     href="#experience"
@@ -51,7 +43,7 @@ export default function NavMobile(props:MobileNavProps) {
                     Upcoming Games
                 </a>
             </li>
-            <li className='marker:text-portfolio-orange hover:text-portfolio-orange'>
+            <li>
                 <a 
                     onClick={toggleMobileMenu} 
                     href="#projects"
@@ -59,7 +51,7 @@ export default function NavMobile(props:MobileNavProps) {
                     Reviews
                 </a>
             </li>
-            <li className='marker:text-portfolio-orange hover:text-portfolio-orange'>
+            <li>
                 <a 
                     onClick={toggleMobileMenu} 
                     href="#contact"
@@ -67,7 +59,7 @@ export default function NavMobile(props:MobileNavProps) {
                     User Topics
                 </a>
             </li>
-            <li className='marker:text-portfolio-orange hover:text-portfolio-orange'>
+            <li>
                 <a 
                     onClick={toggleMobileMenu} 
                     href="#contact"

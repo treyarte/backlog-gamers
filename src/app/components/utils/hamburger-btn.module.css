@@ -37,3 +37,9 @@
 .hamburger.is-open .bar {
     opacity: 0;
 }
+
+@media only screen and (min-width: 891px) {
+    .hamburger {
+        display: none;
+    }
+}

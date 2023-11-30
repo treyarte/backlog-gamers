@@ -1,0 +1,12 @@
+.feed-left {
+    max-width: 250px;
+}
+
+.feed-left img{
+    width: 100%;
+}
+
+.feed-details {
+    padding: 0;
+    list-style: none;
+}

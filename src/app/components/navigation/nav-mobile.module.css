@@ -23,12 +23,10 @@
     flex-direction: column;
     gap: 2.5rem;
 }
-
 .mobile-nav-links a {
     color: #fff; 
     text-decoration: none;   
 }
-
 .mobile-nav-links a:hover{
     color: var(--bg-secondary);
 }
