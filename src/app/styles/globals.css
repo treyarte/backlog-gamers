@@ -37,6 +37,14 @@ body {
   display: flex;
 }
 
+.ellipsis-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media only screen and (min-width: 1331px) {
   .mobile-display {
     display: none;
