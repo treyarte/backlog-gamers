@@ -19,10 +19,31 @@ body {
   font-size: 1rem;
 }
 
+.bg-dark {
+  background-color: var(--bg-main);
+}
+
+a, .h1-dark {
+  color:#fff;
+}
+button {
+  cursor: pointer;
+}
+
+.h1-dark {
+	font-size: 2rem;
+	color: #fff;
+}
+
 .btn-no-style {
   padding: 0;
   border: none;
   background: none;
+}
+
+.link-no-style {
+  text-decoration: none;
+  color: black;
 }
 
 .mobile-display {
