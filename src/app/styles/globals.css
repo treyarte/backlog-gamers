@@ -17,6 +17,11 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   font-size: 1rem;
+  height: 100%;
+}
+
+main {
+  /* padding: 0 10px; */
 }
 
 .bg-dark {
@@ -67,6 +72,10 @@ button {
 }
 
 @media only screen and (min-width: 1331px) {
+  main {
+    padding: 0 40px;
+  }
+  
   .mobile-display {
     display: none;
   }
