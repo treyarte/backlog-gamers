@@ -2,8 +2,9 @@
   --navbar-height:80px;
   --zinc-dark:rgb(39 39 42);
   --portfolio-orange: #FF8551;
-  --bg-main: #222222;
-  --bg-secondary: #3F97E9;
+  --bg-background: #222222;
+  --bg-main: #3F97E9;
+  --bg-main-hover: #519fe9;
 }
 
 * {
@@ -25,7 +26,7 @@ main {
 }
 
 .bg-dark {
-  background-color: var(--bg-main);
+  background-color: var(--bg-background);
 }
 
 a, .h1-dark {
@@ -73,7 +74,7 @@ button {
 
 @media only screen and (min-width: 1331px) {
   main {
-    padding: 0 40px;
+    /* padding: 0 40px; */
   }
   
   .mobile-display {

@@ -5,7 +5,7 @@
     top:0;
     left: 100%;
     min-height: 100vh;
-    background-color: var(--bg-main);
+    background-color: var(--bg-background);
     transition: 0.4s;
     padding: 100px 20px;
 }
@@ -28,5 +28,5 @@
     text-decoration: none;   
 }
 .mobile-nav-links a:hover{
-    color: var(--bg-secondary);
+    color: var(--bg-main);
 }

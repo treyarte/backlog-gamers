@@ -1,5 +1,5 @@
 .nav {
-    background-color: #222222;
+    background-color: #000;
     width: 100%;
     height: var(--navbar-height);
     display: flex;
@@ -27,7 +27,7 @@
     color: #fff;
 }
 .nav-links a:hover {
-    color: var(--bg-secondary);
+    color: var(--bg-main);
 }
 
 @media only screen and (min-width: 891px) {

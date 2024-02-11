@@ -1,3 +1,10 @@
 .background-dark{
     background-color: var(--bg-main);
 }
+
+
+@media only screen and (min-width: 1331px) {
+    .content-padding {
+      padding: 0 40px;
+    }
+  }

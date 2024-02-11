@@ -1,9 +1,15 @@
-import FeedList from './components/feed/feed-list'
+import FeedList from './components/feed/feed-list';
+import Hero from './components/hero/hero';
+import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    	
-			<FeedList />
+    	<>
+        <Hero/>
+        <div className={styles['content-padding']}>
+			    <FeedList />
+        </div>
+      </>
     	
   )
 }
