@@ -1,28 +1,28 @@
-.feed-container {
-    padding-top: 30px;
-}
 
 .feed-container, 
-.feed-items {
+.feed-list {
     display: flex;
     flex-direction: column;    
     gap: 30px;
 }
 
-.feed-items {
-    padding: 0;
-    gap: 10px;
+.feed-list {
+    /* padding: 0; */
+    /* gap: 20px; */
 }
 
 @media only screen and (min-width: 690px) {
-    .feed-items {        
+    .feed-list {        
         flex-direction: row;
         flex-flow: row wrap;        
-        gap: 10px;      
+        display: grid;
+        grid-template-columns: 1fr 1fr;           
     }
 }
 @media only screen and (min-width: 1331px) {
-    .feed-items {                
-        gap: 30px;      
+    .feed-list {                
+        gap: 30px;   
+        /* display: grid;
+        grid-template-columns: 1fr 1fr;          */
     }
 }

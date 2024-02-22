@@ -8,7 +8,7 @@ export default function FeedList() {
             <a href="/feed">
                 View All
             </a>
-            <div className={styles["feed-items"]}>
+            <div className={styles["feed-list"]}>
                 <FeedItem />
                 <FeedItem />
                 <FeedItem />

@@ -67,7 +67,7 @@ export default function RootLayout({
         <header>
           <Nav/>
         </header>
-        <main>
+        <main className='main-container'>
           {children}
         </main>
       </body>

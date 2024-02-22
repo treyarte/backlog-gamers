@@ -2,9 +2,10 @@
   --navbar-height:80px;
   --zinc-dark:rgb(39 39 42);
   --portfolio-orange: #FF8551;
-  --bg-background: #222222;
+  --bg-background: #171717;
   --bg-main: #3F97E9;
   --bg-main-hover: #519fe9;
+  --lesser-text-color:#9e9e9e;
 }
 
 * {
@@ -21,8 +22,10 @@ body {
   height: 100%;
 }
 
-main {
-  /* padding: 0 10px; */
+main {  
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .bg-dark {
