@@ -2,13 +2,25 @@ import { faComment, faShareFromSquare, faThumbsUp } from "@fortawesome/free-regu
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./feed-item.module.css";
 
-export default function NewsItem() {
+type propsType = {
+    title:string
+    url:string
+    //TODO ADD Date And Source Url
+    imgUrl:string
+}
+
+export default function NewsItem(props:propsType) {
+    const {
+        title,
+        url,
+        imgUrl
+    } = props;
 
     return (
         <article className={`${styles["feed-item"]} ${styles["feed-item-dark"]}`}>
             <div className={styles["feed-left"]}>
                 <div className={styles["img-container"]}>
-                    <img src="https://www.gematsu.com/wp-content/uploads/2024/02/Unicorn-Overlord-Demo_02-21-24-768x432.jpg" alt="News Image" />
+                    <img src={`${imgUrl}`} alt="News Image" />
                 </div>
             </div>
 
@@ -21,7 +33,7 @@ export default function NewsItem() {
                         June 4, 2023
                     </div>
                     <div className={`${styles["desc-text"]} ellipsis-text`}>
-                        In a livestream today developer Grinding Gear Games made a slew of announcements, including a first look at a new playable class in its upcoming ARPG Path of Exile 2: the mercenary. 
+                        {title}
                     </div>
 
                     <div className={styles["feed-actions"]}>
