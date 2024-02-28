@@ -20,7 +20,9 @@ export default function NewsItem(props:propsType) {
         <article className={`${styles["feed-item"]} ${styles["feed-item-dark"]}`}>
             <div className={styles["feed-left"]}>
                 <div className={styles["img-container"]}>
-                    <img src={`${imgUrl}`} alt="News Image" />
+                    <a target="_blank" href={url}>
+                        <img src={`${imgUrl}`} alt="News Image" />
+                    </a>
                 </div>
             </div>
 
@@ -33,7 +35,9 @@ export default function NewsItem(props:propsType) {
                         June 4, 2023
                     </div>
                     <div className={`${styles["desc-text"]} ellipsis-text`}>
-                        {title}
+                        <a className="link-no-style" target="_blank" href={url}>
+                            {title}
+                        </a>
                     </div>
 
                     <div className={styles["feed-actions"]}>

@@ -1,11 +1,15 @@
-export default function DefaultError({error,reset}: {
-    error: Error
-    reset: () => void
+'use client'
+import { useErrorBoundary } from "react-error-boundary"
+import styles from "./error.module.css";
+
+export default function DefaultError({error}: {
+    error: any    
 }) {
+    
+    
     return (
-        <div>
-            <h2>Something went wrong!</h2>
-            <button onClick={() => reset()}>Try again</button>
+        <div className={`${styles['error-container']}`}>
+            <h2>{error.message}</h2>            
         </div>
     )
 }

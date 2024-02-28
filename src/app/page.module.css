@@ -6,6 +6,12 @@
   padding: 0 20px;
 }
 
+.feed-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
 @media only screen and (min-width: 1331px) {
     .content-padding {
       padding: 0 40px;

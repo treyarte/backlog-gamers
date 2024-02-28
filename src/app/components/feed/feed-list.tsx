@@ -15,7 +15,7 @@ export default async function FeedList() {
         
     } catch (error) {
         console.error(error);
-        throw new Error("Failed to get feed")
+        throw new Error("Failed to get Gaming Feed")
     }
     return (
 

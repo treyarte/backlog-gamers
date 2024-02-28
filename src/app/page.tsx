@@ -3,6 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import FeedList from './components/feed/feed-list';
 import Hero from './components/hero/hero';
 import styles from "./page.module.css";
+import DefaultError from './components/errors/defaultError';
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
                 <a href="/feed">
                     View All
                 </a>
-                <ErrorBoundary fallback={<div>ERROR</div>}>
+                <ErrorBoundary FallbackComponent={DefaultError}>
                     <FeedList />            
                 </ErrorBoundary>        
             </div>
