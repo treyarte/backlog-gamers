@@ -1,20 +1,35 @@
 import { faComment, faShareFromSquare, faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./feed-item.module.css";
+import { articleType } from "@/app/types/article";
+import { articleSiteType, articleSitesDisplay, articleSitesEnum } from "@/app/models/enums/articleSitesEnum";
+
 
 type propsType = {
     title:string
     url:string
-    //TODO ADD Date And Source Url
+    date:string
     imgUrl:string
+    article:articleType
 }
 
 export default function NewsItem(props:propsType) {
     const {
         title,
         url,
-        imgUrl
+        date,
+        imgUrl,
+        article
     } = props;
+
+    const displaySiteName = ():articleSiteType => {
+        const siteEnum:articleSitesEnum = parseInt(`${article?.articleSite}`);
+        if(isNaN(siteEnum) || articleSitesEnum[siteEnum] == null){
+            return articleSitesDisplay[articleSitesEnum.Unknown];
+        }
+        const siteType = articleSitesDisplay[siteEnum];
+        return siteType;
+    }
 
     return (
         <article className={`${styles["feed-item"]} ${styles["feed-item-dark"]}`}>
@@ -29,10 +44,15 @@ export default function NewsItem(props:propsType) {
             <div className={styles["feed-right"]}>
                 <div className={styles["feed-details"]}>
                     <div>
-                        Source: <a className={styles.source} href="ign.com">IGN</a>
+                        Source: <a 
+                                    className={styles.source} 
+                                    target="blank"
+                                    href={displaySiteName().url}>
+                                        {displaySiteName().name}
+                                    </a>
                     </div>
                     <div className={styles["date-text"]}>
-                        June 4, 2023
+                        {date}
                     </div>
                     <div className={`${styles["desc-text"]} ellipsis-text`}>
                         <a className="link-no-style" target="_blank" href={url}>
