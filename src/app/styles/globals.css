@@ -1,6 +1,7 @@
 :root {
   --navbar-height:80px;
   --zinc-dark:rgb(39 39 42);
+  --zinc-dark-hover:rgb(47, 47, 51);
   --portfolio-orange: #FF8551;
   --bg-background: #171717;
   --bg-main: #3F97E9;
@@ -40,15 +41,38 @@ button {
   cursor: pointer;
 }
 
-.h1-dark {
+.h1-dark, .h3-dark {
 	font-size: 2rem;
 	color: #fff;
+}
+
+.h3-dark {
+  font-size: 1.5rem;
+}
+
+.btn-blg {
+  color: #fff;
+  font-size: 1.2rem;
+  background-color: var(--bg-main);
+  border: none;
+  border-radius: 7px;
+  }
+  
+.btn-blg:hover {
+  background-color: var(--bg-main-hover);
 }
 
 .btn-no-style {
   padding: 0;
   border: none;
   background: none;
+}
+
+.btn-icon {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color:#fff;
 }
 
 .link-no-style {
