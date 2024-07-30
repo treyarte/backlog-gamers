@@ -1,6 +1,7 @@
 import { MobileNavProps } from "@/app/types/props/mobile-nav-props";
 import { useEffect } from "react";
 import styles from "./nav-mobile.module.css";
+import Link from "next/link";
 
 export default function NavMobile(props:MobileNavProps) {
     const {
@@ -66,6 +67,14 @@ export default function NavMobile(props:MobileNavProps) {
                 >
                     Trending Games
                 </a>
+            </li>
+            <li>
+                <Link
+                    onClick={toggleMobileMenu} 
+                    href='/register'
+                >
+                    Sign Up
+                </Link>
             </li>
         </ul>
     </nav>

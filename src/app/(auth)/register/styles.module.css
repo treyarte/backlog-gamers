@@ -1,0 +1,32 @@
+.register {
+    padding: 0 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--full-height);
+}
+
+.registerContainer,
+.registerForm {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    max-width: 700px;
+}
+    .registerContainer {
+        gap: 30px;
+        padding: 20px;
+    }
+    .registerForm {
+        gap: 15px;
+    }
+
+.inputError {
+    min-height: 23px;
+    color:var(--error-text);
+}
+
+.btnAuth:global(.btn-blg) {
+    padding: 10px 20px;
+    width: 100%;
+}

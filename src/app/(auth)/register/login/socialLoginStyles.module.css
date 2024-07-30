@@ -1,0 +1,15 @@
+.socialLogin {
+    display: flex;
+    width: 100%;
+    gap:10px;
+}
+.socialLogin :global(.btn-blg) {
+    width: 100%;
+    padding: 7px 0;
+    display: flex;
+    background-color: #fff;
+    border: 2px solid var(--default-border); 
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}

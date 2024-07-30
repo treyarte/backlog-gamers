@@ -3,6 +3,7 @@ import { useState } from "react";
 import styles from "./nav.module.css";
 import NavMobile from "./nav-mobile";
 import HamburgerBtn from "../utils/hamburger-btn";
+import Image from "next/image";
 
 export default function Nav() {
     const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -17,7 +18,11 @@ export default function Nav() {
         <>
             <nav className={styles.nav}>
                 <a className={styles["logo-link"]} href="/">
-                    <img                         
+                    <Image
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        style={{ width: '100%', height: 'auto' }} 
                         src="/images/logos/bg-logo-invert.png" 
                         alt="logo" 
                     />
