@@ -8,9 +8,9 @@ export default function RegisterPage() {
   return (
     <div className={styles.register}>
         <Card className={styles.registerContainer}>
-            <div className="flex flex-row gap-2 ">
-                <FaUserPlus size={30} />
-                <h1 className='font-bold'>Sign Up</h1>
+            <div className="flex flex-row gap-2 justify-center">
+                <FaUserPlus size={38} />
+                <h1 className='font-bold text-4xl'>Sign Up</h1>
             </div>
             <RegisterForm/>
         </Card>
