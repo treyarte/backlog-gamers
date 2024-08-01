@@ -20,45 +20,52 @@ export default function RegisterForm() {
     <form className={styles.registerForm} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.inputContainer}>
             <TextField
-                
+                error={!!errors.displayName}
                 sx={{width: '100%'}}        
                 variant='outlined'
                 label='Display Name'
                 {...register("displayName")}
             />
-            <div className={styles.inputError}></div>
+            <div className={styles.inputError}>{errors.displayName?.message}</div>
         </div>
         <div className={styles.inputContainer}>
             <TextField
+                error={!!errors.email}
                 sx={{width: '100%'}}        
                 variant='outlined'
                 label='Email'
                 {...register("email")}
             />
-            <div className={styles.inputError}></div>
+            <div className={styles.inputError}>{errors.email?.message}</div>
         </div>
         <div className={styles.inputContainer}>
             <TextField
+                error={!!errors.password}
                 sx={{width: '100%'}}        
                 variant='outlined'
                 label='Password'
                 type='password'
                 {...register("password")}
             />
-            <div className={styles.inputError}></div>
+            <div className={styles.inputError}>{errors.password?.message}</div>
         </div>
         <div className={styles.inputContainer}>
             <TextField
+                error={!!errors.passwordConfirm}
                 sx={{width: '100%'}}        
                 variant='outlined'
                 label='Password Confirmation'
                 type='password'
                 {...register("passwordConfirm")}
             />
-            <div className={styles.inputError}></div>
+            <div className={styles.inputError}>{errors.passwordConfirm?.message}</div>
         </div>
         <div className={styles.formBtnContainer}>
-            <button className={`${styles.btnAuth} btn-blg`}>
+            <button 
+                disabled={!isValid}
+                className={`${styles.btnAuth} btn-blg [&&]:bg-black [&&]:hover:bg-opacity-90 
+                    [&&]:disabled:bg-opacity-70 disabled:cursor-not-allowed`}
+                >
                 Register
             </button>
         </div>

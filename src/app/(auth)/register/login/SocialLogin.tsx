@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-import styles from './socialLoginStyles.module.css';
 import { FcGoogle } from "react-icons/fc";
 import { FaDiscord } from "react-icons/fa6";
 import SocialButton from './SocialButton';
@@ -10,7 +9,7 @@ export default function SocialLogin() {
         
     }
   return (  
-    <div className='flex gap-10 w-full'>
+    <div className='flex md:gap-10 gap-4 w-full '>
         <SocialButton
             handleClick={func}            
         >

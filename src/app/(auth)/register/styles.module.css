@@ -1,9 +1,9 @@
 .register {
-    padding: 0 30px;
+    padding: 0 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: var(--full-height);
+    /* height: var(--full-height); */
 }
 
 .registerContainer,
@@ -22,7 +22,7 @@
     }
 
 .inputError {
-    min-height: 23px;
+    min-height: 24px;
     color:var(--error-text);
 }
 

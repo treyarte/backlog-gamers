@@ -6,7 +6,7 @@ import { FaUserPlus } from 'react-icons/fa6';
 
 export default function RegisterPage() {
   return (
-    <div className={styles.register}>
+    <div className="flex justify-center md:h-[90vh] pl-2 pr-2 mt-2 items-center">
         <Card className={styles.registerContainer}>
             <div className="flex flex-row gap-2 justify-center">
                 <FaUserPlus size={38} />
