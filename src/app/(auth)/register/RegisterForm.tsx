@@ -2,10 +2,11 @@
 import { TextField } from '@mui/material';
 import React from 'react'
 import styles from './styles.module.css';
-import SocialLogin from './login/SocialLogin';
+import SocialLogin from '../login/SocialLogin';
 import {useForm} from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { RegisterSchema, registerSchema } from '@/app/schemas/registerSchema';
+import { createUser } from '@/actions/userActions';
 
 export default function RegisterForm() {
     const {handleSubmit, register, formState: {errors, isValid, isSubmitting}, setError, getValues} = useForm<RegisterSchema>({
@@ -13,8 +14,8 @@ export default function RegisterForm() {
         mode:'onTouched'
     });
 
-    const onSubmit = (data:RegisterSchema) => {
-        console.info(data)
+    const onSubmit = async (data:RegisterSchema) => {
+        await createUser(data)
     }
   return (
     <form className={styles.registerForm} onSubmit={handleSubmit(onSubmit)}>

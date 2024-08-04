@@ -74,13 +74,18 @@ export default function Nav() {
                     </li>
                 </ul>
                 <div className={styles["nav-links"]}>
-                    <a 
-                        onClick={toggleMobileMenu} 
-                        href="#contact"
+                    <a                        
+                        href="/login"
                     >
-                        Login/Sign Up
+                        Login
+                    </a>                
+                    <a                         
+                        href="/register"
+                        >
+                        Register
                     </a>
-                </div>  
+                
+                </div> 
                 <HamburgerBtn
                     isMobileOpen={isMobileOpen}
                     toggleMobileMenu={toggleMobileMenu}
