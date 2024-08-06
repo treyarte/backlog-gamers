@@ -18,7 +18,7 @@ export default function Hero() {
                 <h1 className={styles.title}>
                 Stay up-to-date on the latest gaming news with our <span className={styles.accent}>aggregated</span> news feed.
                 </h1>
-                <button className={styles['btn-cta']}>Sign Up</button>
+                <a href="/register" className={styles['btn-cta']}>Sign Up</a>
             </div>
         </section>        
     )

@@ -6,7 +6,7 @@ import SocialLogin from '../login/SocialLogin';
 import {useForm} from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { RegisterSchema, registerSchema } from '@/app/schemas/registerSchema';
-import { createUser } from '@/actions/userActions';
+import { registerUser } from '@/actions/authActions';
 
 export default function RegisterForm() {
     const {handleSubmit, register, formState: {errors, isValid, isSubmitting}, setError, getValues} = useForm<RegisterSchema>({
@@ -15,7 +15,13 @@ export default function RegisterForm() {
     });
 
     const onSubmit = async (data:RegisterSchema) => {
-        await createUser(data)
+        try {
+            const newUser = await registerUser(data);
+            console.info(newUser);
+            
+        } catch (error) {
+            //TODO add toast notification
+        }
     }
   return (
     <form className={styles.registerForm} onSubmit={handleSubmit(onSubmit)}>
