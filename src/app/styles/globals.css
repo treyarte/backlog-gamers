@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navbar-height:80px;
+  --zinc-dark:rgb(39 39 42);
+  --zinc-dark-hover:rgb(47, 47, 51);
+  --portfolio-orange: #FF8551;
+  --bg-background: #171717;
+  /* --bg-main: #7289da; */
+  --bg-main: #3F97E9;
+  --bg-main-hover: #519fe9;
+  --lesser-text-color:#9e9e9e;
+  --link-color:#fff;
+  --error-text:#d32f2f;
+  --default-border:#B4B4B8;
+  --full-height: calc(100vh - var(--navbar-height));
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-size: 1rem;
+  height: 100%;
+  color: #fff;
+}
+
+main {  
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.bg-dark {
+  background-color: var(--bg-background);
+}
+
+a, .h1-dark {
+  color:#fff;
+}
+button {
+  cursor: pointer;
+}
+
+.h1-dark, .h3-dark {
+	font-size: 2rem;
+	color: #fff;
+}
+
+.h3-dark {
+  font-size: 1.5rem;
+}
+
+.btn-blg {
+  color: #fff;
+  font-size: 1.2rem;
+  background-color: var(--bg-main);
+  border: none;
+  border-radius: 7px;
+  }
+  
+.btn-blg:hover {
+  background-color: var(--bg-main-hover);
+}
+
+.btn-no-style {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.btn-icon {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color:#fff;
+}
+
+.link-no-style {
+  text-decoration: none;
+  color: var(--link-color);
+}
+
+.mobile-display {
+  display:initial;
+}
+
+.desktop-display {
+  display: none;
+}
+
+.flex-dual {
+  display: flex;
+}
+
+.ellipsis-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.input-error {
+  min-height: 24px;
+  color:var(--error-text);
+}
+
+@media only screen and (min-width: 1331px) {
+  main {
+    /* padding: 0 40px; */
+  }
+  
+  .mobile-display {
+    display: none;
+  }
+
+  .desktop-display {
+    display: initial;
+  }
+}

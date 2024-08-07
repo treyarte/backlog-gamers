@@ -1,0 +1,28 @@
+
+.feed-container, 
+.feed-list {
+    display: flex;
+    flex-direction: column;    
+    gap: 30px;
+}
+
+.feed-list {
+    /* padding: 0; */
+    /* gap: 20px; */
+}
+
+@media only screen and (min-width: 690px) {
+    .feed-list {        
+        flex-direction: row;
+        flex-flow: row wrap;        
+        display: grid;
+        grid-template-columns: 1fr 1fr;           
+    }
+}
+@media only screen and (min-width: 1331px) {
+    .feed-list {                
+        gap: 30px;   
+        /* display: grid;
+        grid-template-columns: 1fr 1fr;          */
+    }
+}
