@@ -16,7 +16,7 @@ const config: Config = {
       },
       borderColor: {
         'default': '#B4B4B8'
-      }
+      },
     },
   },
   darkMode: 'class',

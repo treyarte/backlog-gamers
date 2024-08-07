@@ -1,19 +1,11 @@
-.register {
-    padding: 0 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* height: var(--full-height); */
-}
-
-.registerContainer,
+.authContainer,
 .registerForm {
     display: flex;
     flex-flow: column wrap;
     width: 100%;
     max-width: 700px;
 }
-    .registerContainer {
+    .authContainer {
         gap: 30px;
         padding: 20px;
     }

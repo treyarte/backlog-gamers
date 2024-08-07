@@ -2,7 +2,7 @@
 import User from "@/app/models/User";
 import { LoginSchema } from "@/app/schemas/loginSchema";
 import { registerSchema, RegisterSchema } from "@/app/schemas/registerSchema";
-import { signIn } from "@/auth";
+import { signIn, signOut } from "@/auth";
 import { createUserInDb } from "./repos/userRepos";
 import { sanitizeInput } from "@/libs/serverSanitizers";
 
@@ -22,7 +22,8 @@ export async function signInUser(data:LoginSchema) {
         const res = await signIn('credentials', {
             email: data.email,
             password: data.password,
-            redirect: false
+            redirect: true,
+            redirectTo: '/'
         })
 
         console.info(res);
@@ -31,6 +32,10 @@ export async function signInUser(data:LoginSchema) {
         throw error;
     }
 }
+
+export async function signOutUser() {
+    await signOut({redirectTo: '/'});
+  }
 
 /**
  * Register a new user and sanitizes their input

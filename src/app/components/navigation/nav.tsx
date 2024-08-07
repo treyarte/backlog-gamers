@@ -4,9 +4,18 @@ import styles from "./nav.module.css";
 import NavMobile from "./nav-mobile";
 import HamburgerBtn from "../utils/hamburger-btn";
 import Image from "next/image";
+import Link from "next/link";
+import { Session } from "next-auth";
+import { signOut } from "@/auth";
+import SignOutBtn from "./SignOutBtn";
 
-export default function Nav() {
+type Props = {
+    session:Session|null
+}
+
+export default function Nav({session}:Props) {
     const [isMobileOpen, setIsMobileOpen] = useState(false);
+    
 
     /**
      * Toggles the mobile menu open or close
@@ -17,7 +26,7 @@ export default function Nav() {
     return (  
         <>
             <nav className={styles.nav}>
-                <a className={styles["logo-link"]} href="/">
+                <Link className={styles["logo-link"]} href="/">
                     <Image
                         width={0}
                         height={0}
@@ -26,7 +35,7 @@ export default function Nav() {
                         src="/images/logos/bg-logo-invert.png" 
                         alt="logo" 
                     />
-                </a>
+                </Link>
                 <ul className={styles["nav-links"]}>
                     <li>
                         <a 
@@ -74,17 +83,29 @@ export default function Nav() {
                     </li>
                 </ul>
                 <div className={styles["nav-links"]}>
-                    <a                        
-                        href="/login"
-                    >
-                        Login
-                    </a>                
-                    <a                         
-                        href="/register"
-                        >
-                        Register
-                    </a>
-                
+                    {
+                        session ? (
+                            <>
+                                <div>Hello, {session.user.displayName}</div>
+                                <SignOutBtn />
+                            </>
+                        ) 
+                        : (
+                            <>
+                                <Link                        
+                                    href="/login"
+                                >
+                                    Login
+                                </Link>                
+                                <Link                         
+                                    href="/register"
+                                >
+                                    Register
+                                </Link>
+                            </>
+                        )
+                    }
+
                 </div> 
                 <HamburgerBtn
                     isMobileOpen={isMobileOpen}

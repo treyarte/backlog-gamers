@@ -15,20 +15,21 @@ export default function LoginForm() {
     const onSubmit = async (data:LoginSchema) => {
         signInUser(data);
     }
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className='max-w-md w-full flex flex-col flex-wrap gap-7' onSubmit={handleSubmit(onSubmit)}>
         <div>
-            <TextField
+            <TextField                
                 error={!!errors.email}
                 sx={{width: '100%'}}        
                 variant='outlined'
                 label='Email'
                 {...register("email")}
             />
-            <div>{errors.email?.message}</div>
+            <div className='input-error'>{errors.email?.message}</div>
         </div>
         <div>
-            <TextField
+            <TextField                
                 error={!!errors.password}
                 sx={{width: '100%'}}        
                 variant='outlined'
@@ -36,12 +37,12 @@ export default function LoginForm() {
                 type='password'
                 {...register("password")}
             />
-            <div>{errors.password?.message}</div>
+            <div className='input-error'>{errors.password?.message}</div>
         </div>
         <div>
             <button 
                 disabled={!isValid}
-                className={`btn-blg [&&]:bg-black [&&]:hover:bg-opacity-90 
+                className={`btn-blg w-full py-2 [&&]:bg-black [&&]:hover:bg-opacity-90 
                     [&&]:disabled:bg-opacity-70 disabled:cursor-not-allowed`}
                 >
                 Login

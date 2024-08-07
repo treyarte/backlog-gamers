@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Roboto } from 'next/font/google'
 import './styles/globals.css'
 import Nav from './components/navigation/nav'
+import { auth } from '@/auth'
 
 const roboto = Roboto({
   weight: '400',
@@ -56,16 +57,17 @@ export const metadata: Metadata = {
   }
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const session = await auth();
   return (
     <html lang="en">
       <body className={`${roboto.className} bg-dark`}>
         <header>
-          <Nav/>
+          <Nav session={session}/>
         </header>
         <main className='main-container'>
           {children}

@@ -109,6 +109,11 @@ button {
   text-overflow: ellipsis;
 }
 
+.input-error {
+  min-height: 24px;
+  color:var(--error-text);
+}
+
 @media only screen and (min-width: 1331px) {
   main {
     /* padding: 0 40px; */

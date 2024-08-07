@@ -25,7 +25,7 @@ export default function RegisterForm() {
     }
   return (
     <form className={styles.registerForm} onSubmit={handleSubmit(onSubmit)}>
-        <div className={styles.inputContainer}>
+        <div>
             <TextField
                 error={!!errors.displayName}
                 sx={{width: '100%'}}        
@@ -35,7 +35,7 @@ export default function RegisterForm() {
             />
             <div className={styles.inputError}>{errors.displayName?.message}</div>
         </div>
-        <div className={styles.inputContainer}>
+        <div>
             <TextField
                 error={!!errors.email}
                 sx={{width: '100%'}}        
@@ -45,7 +45,7 @@ export default function RegisterForm() {
             />
             <div className={styles.inputError}>{errors.email?.message}</div>
         </div>
-        <div className={styles.inputContainer}>
+        <div>
             <TextField
                 error={!!errors.password}
                 sx={{width: '100%'}}        
@@ -56,7 +56,7 @@ export default function RegisterForm() {
             />
             <div className={styles.inputError}>{errors.password?.message}</div>
         </div>
-        <div className={styles.inputContainer}>
+        <div>
             <TextField
                 error={!!errors.passwordConfirm}
                 sx={{width: '100%'}}        
