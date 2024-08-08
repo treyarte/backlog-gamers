@@ -3,33 +3,42 @@ import User from "@/app/models/User";
 import { LoginSchema } from "@/app/schemas/loginSchema";
 import { registerSchema, RegisterSchema } from "@/app/schemas/registerSchema";
 import { signIn, signOut } from "@/auth";
-import { createUserInDb } from "./repos/userRepos";
 import { sanitizeInput } from "@/libs/serverSanitizers";
+import { ActionResults } from "@/types";
+import { AuthError } from "next-auth";
+import { createUserInDb } from "./repos/userRepos";
+import dbConnect from "@/libs/dbConnect";
 
 /**
  * Sign In a user
  * @param data 
  * @returns 
  */
-export async function signInUser(data:LoginSchema) {
+export async function signInUser(data:LoginSchema) : Promise<ActionResults<string>> {
     try {
-        const existingUser = await User.findOne({email: data.email});
+        //TODO add this to a repo
+        await dbConnect();
+        const existingUser:IUser | null = await User.findOne({email: data.email}).exec();
 
-        if(!existingUser) {return null};
+        if(!existingUser) {return {status: "error", error: "Invalid Credentials"}};
 
-        //TODO check if email is verified
+        if(!existingUser.emailVerified) {return {status: "error", error: "Please verify your email"}}
 
         const res = await signIn('credentials', {
             email: data.email,
             password: data.password,
             redirect: true,
             redirectTo: '/'
-        })
+        });
 
-        console.info(res);
+        return {status: "success", data: "Login Success"};
+        
     } catch (error) {
         console.error(error);
-        throw error;
+        if(error instanceof AuthError) {
+            return {status: "error", error: "Invalid Credentials"};
+        }
+        return {status: "error", error: "Something went wrong"};
     }
 }
 
@@ -43,6 +52,7 @@ export async function signOutUser() {
  */
 export async function registerUser(data:RegisterSchema) {
     try {
+        
         const validate = registerSchema.safeParse(data);
 
         if(!validate.success) {

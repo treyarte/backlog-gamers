@@ -5,15 +5,33 @@ import { TextField } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import SocialLogin from '../login/SocialLogin';
 import { signInUser } from '@/actions/authActions';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
+/**
+ * Form for handling login
+ * @returns 
+ */
 export default function LoginForm() {
+    const router = useRouter();
     const {handleSubmit, register, formState: {errors, isValid, isSubmitting}, setError, getValues} = useForm<LoginSchema>({
         resolver: zodResolver(loginSchema),
         mode:'onTouched'
     });
 
+    /**
+     * Submit user credentials to our auth actions to check if a user is authenticated
+     * @param data 
+     */
     const onSubmit = async (data:LoginSchema) => {
-        signInUser(data);
+        const res = await signInUser(data);
+        
+        if(res.status === 'success') {
+            router.push('/');
+            router.refresh();
+        } else {
+            toast.error(res.error as string);
+        }
     }
 
   return (
