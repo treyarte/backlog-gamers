@@ -29,6 +29,7 @@ export default function LoginForm() {
         if(res.status === 'success') {
             router.push('/');
             router.refresh();
+            toast.success("Successfully signed in");
         } else {
             toast.error(res.error as string);
         }

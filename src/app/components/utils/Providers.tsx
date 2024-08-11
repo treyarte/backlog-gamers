@@ -11,7 +11,7 @@ type Props = {
 export default function Providers({children}:Props) {
   return (
     <SessionProvider>
-        <ToastContainer position="top-right" className="z-50"/>
+        <ToastContainer position="top-left" className="z-50"/>
         {children}
     </SessionProvider>
   )
