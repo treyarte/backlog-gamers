@@ -31,7 +31,7 @@ export default function NavMobile(props:MobileNavProps) {
             <li>
                 <a 
                     onClick={toggleMobileMenu} 
-                    href="#about"
+                    href="/feed"
                 >
                     News Feed
                 </a>

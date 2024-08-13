@@ -1,10 +1,11 @@
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import {prisma} from "@/libs/prisma"
 import NextAuth from "next-auth";
-import {MongoDBAdapter} from "@auth/mongodb-adapter";
-import clientPromise from "@/libs/mongodb";
 import authConfig from "./auth.config";
 
+
 export const {auth, handlers, signIn, signOut} = NextAuth({
-    adapter: MongoDBAdapter(clientPromise),
+    adapter: PrismaAdapter(prisma),
     session: {
         strategy: 'jwt',
         maxAge: 30 * 24 * 60 * 60
@@ -14,14 +15,14 @@ export const {auth, handlers, signIn, signOut} = NextAuth({
         jwt({token, user}) {
             if(user) {
                 token.id = user.id;
-                token.displayName = user.displayName;
+                token.name = user.name;
             }
             return token;
         },
         session({token, session, user}) {
             if(token.sub && session.user) {
                 session.user.id = token.sub;
-                session.user.displayName = token.displayName as string;
+                session.user.name = token.name as string;
             }
             return session;
         }

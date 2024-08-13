@@ -38,55 +38,50 @@ export default function Nav({session}:Props) {
                 </Link>
                 <ul className={styles["nav-links"]}>
                     <li>
-                        <a 
-                            onClick={toggleMobileMenu} 
-                            href="#about"
+                        <Link                             
+                            href="/feed"
                         >
                             <span className="mobile-display">Feed</span>
                             <span className="desktop-display">News Feed</span>                            
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a 
-                            onClick={toggleMobileMenu} 
+                        <Link                            
                             href="#experience"
                         >
                             <span className="mobile-display">Upcoming</span>
                             <span className="desktop-display">Upcoming Games</span>                              
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a 
-                            onClick={toggleMobileMenu} 
+                        <Link                            
                             href="#projects"
                         >
                             Reviews
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a 
-                            onClick={toggleMobileMenu} 
+                        <Link                            
                             href="#contact"
                         >
                             <span className="mobile-display">Topics</span>
                             <span className="desktop-display">User Topics</span>                              
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a 
-                            onClick={toggleMobileMenu} 
+                        <Link                            
                             href="#contact"
                         >
                             <span className="mobile-display">Trending</span>
                             <span className="desktop-display">Trending Games</span>                              
-                        </a>
+                        </Link>
                     </li>
                 </ul>
                 <div className={styles["nav-links"]}>
                     {
                         session ? (
                             <>
-                                <div>Hello, {session.user.displayName}</div>
+                                <div>Hello, {session.user.name}</div>
                                 <SignOutBtn />
                             </>
                         ) 

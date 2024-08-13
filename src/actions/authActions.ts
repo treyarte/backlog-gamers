@@ -1,35 +1,55 @@
 'use server';
-import User from "@/app/models/User";
-import { LoginSchema } from "@/app/schemas/loginSchema";
+import { loginSchema, LoginSchema } from "@/app/schemas/loginSchema";
 import { registerSchema, RegisterSchema } from "@/app/schemas/registerSchema";
 import { signIn, signOut } from "@/auth";
-import { createUserInDb } from "./repos/userRepos";
 import { sanitizeInput } from "@/libs/serverSanitizers";
+import { ActionResults } from "@/types";
+import { AuthError } from "next-auth";
+import { UserRepo } from "./repos/userRepos";
+import { User } from "@prisma/client";
+import { hashPassword } from "@/libs/bcryptHelper";
+import { convertDateToUtc } from "@/libs/dateHelpers";
+
+const userRepo = new UserRepo();
 
 /**
  * Sign In a user
  * @param data 
  * @returns 
  */
-export async function signInUser(data:LoginSchema) {
+export async function signInUser(data:LoginSchema) : Promise<ActionResults<string>> {
     try {
-        const existingUser = await User.findOne({email: data.email});
+        const validated = loginSchema.safeParse(data);
 
-        if(!existingUser) {return null};
+        if(!validated.success) {
+            return {status: "error", error: validated.error.errors};
+        }
+        
+        const {email, password} = validated.data;
 
-        //TODO check if email is verified
+        const sanitizeEmail = sanitizeInput(email);
+        const sanitizePassword = sanitizeInput(password);
 
-        const res = await signIn('credentials', {
-            email: data.email,
-            password: data.password,
-            redirect: true,
-            redirectTo: '/'
-        })
+        const existingUser = await userRepo.findUserByEmail(sanitizeEmail)
 
-        console.info(res);
+        if(!existingUser) {return {status: "error", error: "Invalid Credentials"}};
+
+        // if(!existingUser.emailVerified) {return {status: "error", error: "Please verify your email"}}
+
+        const _ = await signIn('credentials', {
+            email: sanitizeEmail,
+            password: sanitizePassword,
+            redirect: false,            
+        });
+
+        return {status: "success", data: "Login Success"};
+        
     } catch (error) {
         console.error(error);
-        throw error;
+        if(error instanceof AuthError) {
+            return {status: "error", error: "Invalid Credentials"};
+        }
+        return {status: "error", error: "Something went wrong"};
     }
 }
 
@@ -41,27 +61,43 @@ export async function signOutUser() {
  * Register a new user and sanitizes their input
  * @param data 
  */
-export async function registerUser(data:RegisterSchema) {
+export async function registerUser(data:RegisterSchema) : Promise<ActionResults<User>> {
     try {
-        const validate = registerSchema.safeParse(data);
+        
+        const validated = registerSchema.safeParse(data);
 
-        if(!validate.success) {
-            throw new Error(validate.error.message);
+        if(!validated.success) {
+            return {status: 'error', error: validated.error?.errors};
         }
 
-        const {displayName, email, password} = validate.data;
+        let {displayName, email, password} = validated.data;
 
-        const cleanData:RegisterSchema = {
-            displayName: sanitizeInput(displayName),
-            email: sanitizeInput(email),
-            password: sanitizeInput(password),
-            passwordConfirm: ""
+        displayName = sanitizeInput(displayName.trim());
+        email = sanitizeInput(email.trim());
+        password = sanitizeInput(password).trim();
+
+        const passwordHash = await hashPassword(password)
+
+        const userData:User = {
+            id:"",
+            displayName,
+            email,
+            passwordHash,
+            image:"",
+            emailVerified: false,
+            updatedAt:  convertDateToUtc(new Date()) as unknown as Date,
+            createdAt: convertDateToUtc(new Date()) as unknown as Date,
         }
 
-        const newUser = await createUserInDb(cleanData);
-        return newUser;
+        //TODO check if email exists
+
+        const newUser = await userRepo.createUser(userData);
+
+        //TODO send verification email
+
+        return {status: "success", data:newUser};
     } catch (error) {
         console.error(error);
-        return null;
+        return {status: "error", error: "Something went wrong"};
     }
 }

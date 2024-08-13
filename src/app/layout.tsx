@@ -3,6 +3,7 @@ import { Inter, Roboto } from 'next/font/google'
 import './styles/globals.css'
 import Nav from './components/navigation/nav'
 import { auth } from '@/auth'
+import Providers from './components/utils/Providers'
 
 const roboto = Roboto({
   weight: '400',
@@ -66,12 +67,14 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.className} bg-dark`}>
-        <header>
-          <Nav session={session}/>
-        </header>
-        <main className='main-container'>
-          {children}
-        </main>
+        <Providers>
+          <header>
+            <Nav session={session}/>
+          </header>
+          <main className='main-container'>
+            {children}
+          </main>
+        </Providers>
       </body>
     </html>
   )

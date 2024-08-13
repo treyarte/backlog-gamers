@@ -1,11 +1,20 @@
 import { loginSchema } from "@/app/schemas/loginSchema";
-import {NextAuthConfig} from "next-auth";
-import Credentials from "next-auth/providers/credentials";
-import User from "./app/models/User";
 import { compare } from "bcryptjs";
+import { NextAuthConfig } from "next-auth";
+import Credentials from "next-auth/providers/credentials";
+import Google from "next-auth/providers/google";
+import Discord from "next-auth/providers/discord";
+import { User } from "@prisma/client";
+import { UserRepo } from "./actions/repos/userRepos";
+
+const userRepo = new UserRepo();
 
 export default {
-    providers: [      
+    providers: [
+        Google({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,          
+        }),
         Credentials({
             name: 'credentials',         
             async authorize(credentials, req) {
@@ -17,14 +26,34 @@ export default {
 
                 const {email, password} = validated.data;
 
-                const user = await User.findOne({email});
+                const user = await userRepo.findUserByEmail(email);
 
-                if(!user || !user.password || !(await compare(password, user.password))) {
-                  return null;
-                }                
-
-                return user;
+               if(await checkUserValid(user, password)) {                    
+                    return user
+               }
+                
+               return null;
             }      
         })
     ]
-} satisfies NextAuthConfig
+} satisfies NextAuthConfig;
+
+/**
+ * Checks to see if a User results is valid
+ * @param userResults 
+ * @param password 
+ * @returns 
+ */
+const checkUserValid = async (user:User|null, password:string) : Promise<boolean> => {
+    if(!user) {
+        return false;
+    }
+
+    const {passwordHash: userPwHash} = user;
+
+    if(!userPwHash || !(await compare(password, userPwHash))) {
+        return false;
+    }
+
+    return true;
+}
