@@ -15,14 +15,14 @@ export const {auth, handlers, signIn, signOut} = NextAuth({
         jwt({token, user}) {
             if(user) {
                 token.id = user.id;
-                token.displayName = user.displayName;
+                token.name = user.name;
             }
             return token;
         },
         session({token, session, user}) {
             if(token.sub && session.user) {
                 session.user.id = token.sub;
-                session.user.displayName = token.displayName as string;
+                session.user.name = token.name as string;
             }
             return session;
         }

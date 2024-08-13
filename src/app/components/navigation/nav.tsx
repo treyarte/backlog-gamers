@@ -81,7 +81,7 @@ export default function Nav({session}:Props) {
                     {
                         session ? (
                             <>
-                                <div>Hello, {session.user.displayName}</div>
+                                <div>Hello, {session.user.name}</div>
                                 <SignOutBtn />
                             </>
                         ) 

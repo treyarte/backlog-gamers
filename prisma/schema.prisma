@@ -22,13 +22,13 @@ model Articles {
 
 model User {
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
-  displayName   String
+  name          String?
   email         String    @unique
-  passwordHash  String
-  image         String
-  emailVerified Boolean
+  passwordHash  String?
+  image         String?
+  emailVerified DateTime? @db.Date
   createdAt     DateTime  @default(now()) @db.Date
-  updatedAt     DateTime  @db.Date
+  updatedAt     DateTime  @updatedAt @db.Date
   accont        Account[]
 }
 
@@ -50,4 +50,6 @@ model Account {
   updatedAt DateTime @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
 }

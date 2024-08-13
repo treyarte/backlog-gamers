@@ -2,15 +2,19 @@ import { loginSchema } from "@/app/schemas/loginSchema";
 import { compare } from "bcryptjs";
 import { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { findUserByEmail } from "./actions/userActions";
-import { ActionResults } from "./types";
+import Google from "next-auth/providers/google";
+import Discord from "next-auth/providers/discord";
 import { User } from "@prisma/client";
 import { UserRepo } from "./actions/repos/userRepos";
 
 const userRepo = new UserRepo();
 
 export default {
-    providers: [      
+    providers: [
+        Google({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,          
+        }),
         Credentials({
             name: 'credentials',         
             async authorize(credentials, req) {

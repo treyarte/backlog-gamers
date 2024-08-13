@@ -51,15 +51,14 @@ export class UserRepo {
     }
 
     public async createUser(user:User) {
-        const {email, passwordHash, displayName, updatedAt} = user;
+        const {email, passwordHash, name, updatedAt} = user;
         try {
              return prisma.user.create({
                 data: {
-                    displayName,
+                    name,
                     email,
                     passwordHash,
-                    image:"",
-                    emailVerified: false,
+                    image:"",                    
                     updatedAt
                 }
             });
