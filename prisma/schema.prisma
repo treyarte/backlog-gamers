@@ -29,7 +29,7 @@ model User {
   emailVerified DateTime? @db.Date
   createdAt     DateTime  @default(now()) @db.Date
   updatedAt     DateTime  @updatedAt @db.Date
-  accont        Account[]
+  account       Account[]
 }
 
 model Account {
