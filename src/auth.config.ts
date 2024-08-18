@@ -15,6 +15,10 @@ export default {
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,          
         }),
+        Discord({
+            clientId: process.env.DISCORD_CLIENT_ID,
+            clientSecret: process.env.DISCORD_CLIENT_SECRET,
+        }),
         Credentials({
             name: 'credentials',         
             async authorize(credentials, req) {
