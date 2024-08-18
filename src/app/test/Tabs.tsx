@@ -1,12 +1,31 @@
-import styles from './panel.module.css';
-export default function Tabs() {
-  return (
-    <div>Tabs</div>
-  )
+'use client';
+import { ReactNode, useState } from 'react';
+import Tab from './Tab';
+
+type Props = {
+    labels:string[];
+    tabContainers:ReactNode[];
 }
 
-
-Tabs.tab1 = (props:{children:React.ReactNode}) => (<button className={styles.tab1}>{props.children}</button>)
-Tabs.tab2 = (props:{children:React.ReactNode}) => (<button className={styles.tab2}>{props.children}</button>)
-Tabs.tab3 = (props:{children:React.ReactNode}) => (<button className={styles.tab3}>{props.children}</button>)
-Tabs.tab4 = (props:{children:React.ReactNode}) => (<button className={styles.tab4}>{props.children}</button>)
+export default function Tabs({labels, tabContainers}:Props) {
+    const [currentTab, setCurrentTab] = useState(0);
+    return (
+        <div>
+            <ul role='tablist' className='flex border-b-2 border-opacity-15 border-gray-300'>
+                {labels.map((label, index) => (
+                    <Tab 
+                        key={index} 
+                        label={label} 
+                        selectedVal={index} 
+                        currentVal={currentTab} 
+                        onTabClick={setCurrentTab} 
+                    />
+                ))}
+            </ul>
+            <div className='mt-5'>
+                {tabContainers[currentTab]}
+            </div>
+      </div>
+    
+  )
+}

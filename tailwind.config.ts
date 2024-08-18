@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  mode: 'jit',
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -17,9 +18,19 @@ const config: Config = {
       borderColor: {
         'default': '#B4B4B8'
       },
+      textColor: {
+        'default': '#519fe9'
+      },
+      backgroundColor: {
+        'default': '#3F97E9'
+      },
+      boxShadow: {
+        'custom': '0px 2px 8px 0px rgba(99, 99, 99, 0.2)',
+      },
     },
   },
   darkMode: 'class',
   plugins: [],
+  
 };
 export default config;

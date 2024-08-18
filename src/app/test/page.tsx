@@ -1,6 +1,9 @@
 import CloseIcon from '@mui/icons-material/Close';
 import styles from './panel.module.css';
-import { Tab, Tabs } from '@mui/material';
+import Tabs from './Tabs';
+import SourcesTab from './SourcesTab';
+import TagsTab from './TagsTab';
+import {v4 as uuidV4} from 'uuid';
 
 export default function Testpage() {
   return (
@@ -10,9 +13,15 @@ export default function Testpage() {
             <CloseIcon/>
         </div>
         <div className={styles.panelBody}>
-            <div className={styles.tabs}>
-                
-            </div>
+          <div className="mt-5">
+            <Tabs                 
+                labels={["Sources", "Tags"]}
+                tabContainers={[
+                <SourcesTab key={uuidV4()}/>, 
+                <TagsTab key={uuidV4()} />
+              ]}
+              />
+          </div>
         </div>
     </div>
   )
