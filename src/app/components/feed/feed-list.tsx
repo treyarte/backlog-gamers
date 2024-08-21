@@ -18,6 +18,7 @@ export default async function FeedList() {
             <div className={styles["feed-list"]}>                            
                 {data.map((article:articleType) => (
                     <FeedItem 
+                        key={article.id}
                         title={article.title} 
                         date={formatDate(article.articleDate)}
                         url={article.url} 
