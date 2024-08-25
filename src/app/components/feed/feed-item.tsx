@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./feed-item.module.css";
 import { articleType } from "@/app/types/article";
 import { articleSiteType, articleSitesDisplay, articleSitesEnum } from "@/app/models/enums/articleSitesEnum";
+import { Article } from "@prisma/client";
 
 
 type propsType = {
@@ -10,7 +11,7 @@ type propsType = {
     url:string
     date:string
     imgUrl:string
-    article:articleType
+    article:Article
 }
 
 export default function NewsItem(props:propsType) {
@@ -23,7 +24,7 @@ export default function NewsItem(props:propsType) {
     } = props;
 
     const displaySiteName = ():articleSiteType => {
-        const siteEnum:articleSitesEnum = parseInt(`${article?.articleSite}`);
+        const siteEnum:articleSitesEnum = parseInt("fdsaa");
         if(isNaN(siteEnum) || articleSitesEnum[siteEnum] == null){
             return articleSitesDisplay[articleSitesEnum.Unknown];
         }

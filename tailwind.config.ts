@@ -26,7 +26,8 @@ const config: Config = {
         'default': '#519fe9'
       },      
       backgroundColor: {
-        'default': '#3F97E9',        
+        'default': '#3F97E9',   
+        'container': '#1B1D2A'    
       },
       boxShadow: {
         'custom': '0px 2px 8px 0px rgba(99, 99, 99, 0.2)',

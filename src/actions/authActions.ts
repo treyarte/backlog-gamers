@@ -80,11 +80,11 @@ export async function registerUser(data:RegisterSchema) : Promise<ActionResults<
 
         const userData:User = {
             id:"",
-            displayName,
+            name:displayName,
             email,
             passwordHash,
             image:"",
-            emailVerified: false,
+            emailVerified:convertDateToUtc(new Date()) as unknown as Date,
             updatedAt:  convertDateToUtc(new Date()) as unknown as Date,
             createdAt: convertDateToUtc(new Date()) as unknown as Date,
         }
