@@ -68,7 +68,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${roboto.className} bg-dark`}>
         <Providers>
-          <header>
+          <header className='w-full fixed'>
             <Nav session={session}/>
           </header>
           <main className='main-container'>

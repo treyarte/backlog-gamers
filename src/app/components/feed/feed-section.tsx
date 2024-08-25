@@ -12,13 +12,13 @@ const FeedSection = () =>{
             <div className={styles["feed-container"]}>
                 <h1 className="h1-dark">Your Gaming Feed</h1>
                 {/* <FeedSettings /> */}
-                <CustomizeFeed />
+                {/* <CustomizeFeed /> */}
                 <a href="/feed">
                     View All
                 </a>
-                <ErrorBoundary FallbackComponent={DefaultError}>
+                {/* <ErrorBoundary FallbackComponent={DefaultError}>
                     <FeedList />            
-                </ErrorBoundary>        
+                </ErrorBoundary>         */}
             </div>
         </div>
     )

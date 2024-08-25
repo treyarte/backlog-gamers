@@ -21,6 +21,10 @@
   --navbar-color: #000;
 }
 
+next-route-announcer div {
+  margin: 0 !important;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -82,12 +86,28 @@ button {
   color: #fff;
   font-size: 1.2rem;
   background-color: var(--bg-main);
+  background: rgb(223,95,73);
+background: linear-gradient(90deg, rgba(223,95,73,1) 0%, rgba(252,131,94,1) 50%, rgba(252,145,104,1) 100%);
+  width: 300px;
+  padding: 10px;
+  
   border: none;
   border-radius: 7px;
+  background: hsla(132, 79%, 68%, 1);
+
+  background: linear-gradient(90deg, hsla(132, 79%, 68%, 1) 0%, hsla(101, 62%, 48%, 1) 100%);
+  
+  background: -moz-linear-gradient(90deg, hsla(132, 79%, 68%, 1) 0%, hsla(101, 62%, 48%, 1) 100%);
+  
+  background: -webkit-linear-gradient(90deg, hsla(132, 79%, 68%, 1) 0%, hsla(101, 62%, 48%, 1) 100%);
+  
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#6EEE87", endColorstr="#5FC52E", GradientType=1 );
+  
   }
   
 .btn-blg:hover {
   background-color: var(--bg-main-hover);
+  
 }
 
 .btn-no-style {
