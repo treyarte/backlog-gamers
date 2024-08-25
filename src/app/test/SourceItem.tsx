@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function SourceItem() {
   return (
-    <div className='flex justify-between border border-[rgb(47,47,51)] items-center p-2  rounded-2xl shadow-custom'>
+    <div className='flex justify-between border border-bg-border items-center p-3 rounded-2xl '>
         <div className='w-9 rounded-full h-9 bg-white'>
             <Image 
                 width={0}

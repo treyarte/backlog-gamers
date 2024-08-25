@@ -3,14 +3,17 @@ import DefaultError from "../errors/defaultError";
 import FeedList from "./feed-list";
 import styles from "../../page.module.css";
 import FeedSettings from "./feed-settings";
+import CustomizeFeed from "../setting/feed/CustomizeFeed";
+import BlgContainer from "../utils/containers/BlgContainer";
 
 
 const FeedSection = () =>{
     return (
-        <div className={styles['content-padding']}>    
+        <BlgContainer>
             <div className={styles["feed-container"]}>
                 <h1 className="h1-dark">Your Gaming Feed</h1>
-                <FeedSettings />
+                {/* <FeedSettings /> */}
+                {/* <CustomizeFeed /> */}
                 <a href="/feed">
                     View All
                 </a>
@@ -18,7 +21,7 @@ const FeedSection = () =>{
                     <FeedList />            
                 </ErrorBoundary>        
             </div>
-        </div>
+        </BlgContainer>
     )
 }
 

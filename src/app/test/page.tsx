@@ -7,7 +7,7 @@ import {v4 as uuidV4} from 'uuid';
 
 export default function Testpage() {
   return (
-    <div className={styles.panel}>
+    <div className={styles.panel + " page-layout"}>
         <div className={styles.panelHeader}>
             <h1 className='h1-dark'>Customize Feed</h1>
             <CloseIcon/>

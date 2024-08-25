@@ -4,6 +4,7 @@ import './styles/globals.css'
 import Nav from './components/navigation/nav'
 import { auth } from '@/auth'
 import Providers from './components/utils/Providers'
+import NavButtom from './components/navigation/NavButtom'
 
 const roboto = Roboto({
   weight: '400',
@@ -68,10 +69,10 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${roboto.className} bg-dark`}>
         <Providers>
-          <header>
+          <header className='w-full fixed'>
             <Nav session={session}/>
           </header>
-          <main className='main-container'>
+          <main className='main-container'>        
             {children}
           </main>
         </Providers>

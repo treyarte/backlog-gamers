@@ -7,7 +7,9 @@
   --zinc-dark:rgb(39 39 42);
   --zinc-dark-hover:rgb(47, 47, 51);
   --portfolio-orange: #FF8551;
-  --bg-background: #171717;
+  /* --bg-background: #171717;   */
+  /* --bg-background: #212121;   */
+  --bg-background: #0C0F1D;  
   /* --bg-main: #7289da; */
   --bg-main: #3F97E9;
   --bg-main-hover: #519fe9;
@@ -15,13 +17,20 @@
   --link-color:#fff;
   --error-text:#d32f2f;
   --default-border:#B4B4B8;
+  --main-text-color:#fff;
   --full-height: calc(100vh - var(--navbar-height));
+  --navbar-color: #000;
+}
+
+next-route-announcer div {
+  margin: 0 !important;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  line-height: normal;
 }
 
 html,
@@ -30,7 +39,7 @@ body {
   overflow-x: hidden;
   font-size: 1rem;
   height: 100%;
-  color: #fff;
+  color: var(--main-text-color);
 }
 
 main {  
@@ -39,23 +48,38 @@ main {
   gap: 40px;
 }
 
+.page-layout {
+  max-width: 1280px;  
+  margin: 0 auto;
+}
+
 .bg-dark {
   background-color: var(--bg-background);
 }
 
-a, .h1-dark {
-  color:#fff;
+a, 
+.h1-dark, 
+.h2-bg,
+.h3-dark,
+h1,
+h2,
+h3
+ {
+  color:var(--main-text-color);
 }
 button {
   cursor: pointer;
 }
 
-.h1-dark, .h3-dark {
-	font-size: 2rem;
-	color: #fff;
+.h1-dark, h1 {
+	font-size: 2rem;	
 }
 
-.h3-dark {
+.h2-bg, h2 {
+  font-size: 1.7rem;
+}
+
+.h3-dark, h3 {
   font-size: 1.5rem;
 }
 
@@ -63,12 +87,28 @@ button {
   color: #fff;
   font-size: 1.2rem;
   background-color: var(--bg-main);
+  background: rgb(223,95,73);
+background: linear-gradient(90deg, rgba(223,95,73,1) 0%, rgba(252,131,94,1) 50%, rgba(252,145,104,1) 100%);
+  width: 300px;
+  padding: 10px;
+  
   border: none;
   border-radius: 7px;
+  background: hsla(132, 79%, 68%, 1);
+
+  background: linear-gradient(90deg, hsla(132, 79%, 68%, 1) 0%, hsla(101, 62%, 48%, 1) 100%);
+  
+  background: -moz-linear-gradient(90deg, hsla(132, 79%, 68%, 1) 0%, hsla(101, 62%, 48%, 1) 100%);
+  
+  background: -webkit-linear-gradient(90deg, hsla(132, 79%, 68%, 1) 0%, hsla(101, 62%, 48%, 1) 100%);
+  
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#6EEE87", endColorstr="#5FC52E", GradientType=1 );
+  
   }
   
 .btn-blg:hover {
   background-color: var(--bg-main-hover);
+  
 }
 
 .btn-no-style {

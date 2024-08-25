@@ -1,5 +1,6 @@
+
 .nav {
-    background-color: #000;
+    background-color: transparent;
     width: 100%;
     height: var(--navbar-height);
     display: flex;
@@ -11,7 +12,13 @@
 
 .logo-link {    
     z-index: 100;
-    width: 230px;    
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 2rem;
+    width: auto;
+    /* width: 230px; */
+
 }
 .logo-link img {
     width: 100%;
@@ -37,7 +44,7 @@
     }
 
     .logo-link {
-        width: 250px;
+        /* width: 250px; */
     }
 
     .nav-links {
@@ -53,11 +60,12 @@
     }
 
     .logo-link {
-        width: 300px;
+        /* width: 300px; */
     }
 
     .nav-links {
         gap: 40px;  
+        font-size: 1.3rem;
     }
 
 }

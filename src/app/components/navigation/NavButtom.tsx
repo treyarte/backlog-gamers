@@ -13,7 +13,7 @@ type Props = {
     session:Session|null
 }
 
-export default function Nav({session}:Props) {
+export default function NavBottom({session}:Props) {
     const [isMobileOpen, setIsMobileOpen] = useState(false);
     
 

@@ -16,7 +16,7 @@
     background-color: var(--bg-background);
     height: 100vh;
     padding: 12px;
-    width: 100vw;
+    /* width: 100vw; */
 }
 
 .feed-header {

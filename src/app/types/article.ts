@@ -1,6 +1,7 @@
 import { articleSitesEnum } from "../models/enums/articleSitesEnum"
 
 export type articleType = {
+    id:string;
     title:string, 
     url:string, 
     shortDescription:string, 
