@@ -1,12 +1,11 @@
-"use client";
-import { useState } from "react";
-import styles from "./nav.module.css";
-import NavMobile from "./nav-mobile";
-import HamburgerBtn from "../utils/hamburger-btn";
+'use client';
+import { Session } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
-import { Session } from "next-auth";
-import { signOut } from "@/auth";
+import { useState } from "react";
+import HamburgerBtn from "../utils/hamburger-btn";
+import NavMobile from "./nav-mobile";
+import styles from "./nav.module.css";
 import SignOutBtn from "./SignOutBtn";
 
 type Props = {
@@ -15,8 +14,7 @@ type Props = {
 
 export default function Nav({session}:Props) {
     const [isMobileOpen, setIsMobileOpen] = useState(false);
-    
-
+  
     /**
      * Toggles the mobile menu open or close
      * @returns 
@@ -26,9 +24,9 @@ export default function Nav({session}:Props) {
     return (
       <>
         {/* <nav className={styles.nav}> */}
-        <nav className='z-10 h-20 w-full
+        <nav className={`z-10 h-20 w-full
                     sticky top-0 flex items-center 
-                     justify-between px-28'
+                     justify-between px-28 bg-zinc-800 backdrop-filter backdrop-blur-lg bg-opacity-30 transition-opacity`}
         >
           <Link className={styles['logo-link']} href='/'>
             <Image
