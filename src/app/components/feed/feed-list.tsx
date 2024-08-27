@@ -1,26 +1,24 @@
+'use client'
 import { getArticles } from "@/actions/articleActions";
 import FeedItem from "./feed-item";
 import styles from "./feed-list.module.css";
 import { articleType } from "@/app/types/article";
 import { formatDate } from "@/app/utils/dateHelpers";
 import { Article } from "@prisma/client";
+import { useState } from "react";
 
-export default async function FeedList() {
-    let data:Article[] = [];
+type Props = {
+    initialArticles:Article[];
+    take:number;
+}
 
-    try {
-        const res = await getArticles();
-        if(res.status === 'success') {
-            data = res.data;
-        }
-        
-    } catch (error) {
-        console.error(error);
-        throw new Error("Failed to get Gaming Feed")
-    }
+export default function FeedList({initialArticles, take}:Props) {
+    const [articles, setArticles] = useState(initialArticles)
+    const [skip, setSkip] = useState(take);
+
     return (
-            <div className={styles["feed-list"]}>                            
-                {data.map((article:Article) => (
+            <div className="  xl:grid xl:grid-cols-2 gap-8">                            
+                {articles.map((article:Article) => (
                     <FeedItem 
                         key={article.id}
                         title={article.title} 
@@ -29,7 +27,7 @@ export default async function FeedList() {
                         imgUrl={article.imageUrl} 
                         article={article}
                     />
-                ))}                                          
+                ))}                
             </div>        
     )
 }
