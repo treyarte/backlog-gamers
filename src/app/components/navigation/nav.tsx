@@ -24,22 +24,25 @@ export default function Nav({session}:Props) {
     return (
       <>
         {/* <nav className={styles.nav}> */}
-        <nav className={`z-10 h-20 w-full
-                    sticky top-0 flex items-center 
-                     justify-between px-28 bg-zinc-800 backdrop-filter backdrop-blur-lg bg-opacity-30 transition-opacity`}
+        <nav className={`z-10 h-20 w-full sticky top-0 flex items-center 
+                     justify-between px-3 md:px-12 2xl:px-28 bg-zinc-800 
+                     backdrop-filter backdrop-blur-lg bg-opacity-30 transition-opacity`}
         >
-          <Link className={styles['logo-link']} href='/'>
-            <Image
-              width={0}
-              height={0}
-              sizes='100vw'
-              style={{ width: '70px', height: 'auto' }}
-              src='/images/logos/bg-logo-invert.png'
-              alt='logo'
-            />
-            Backlog Gamers
-          </Link>
-          <ul className={styles['nav-links']}>
+            <Link className="flex gap-2 text-xl 2xl:text-3xl items-center" href='/'>
+                <div className="w-11 xl:w-16">
+                    <Image
+                        width={0}
+                        height={0}
+                        className="w-11 xl:w-16"
+                        sizes='100vw'
+                        style={{ width: '100%', height: 'auto' }}
+                        src='/images/logos/bg-logo-invert.png'
+                        alt='logo'
+                    />
+                </div>
+                Backlog Gamers
+            </Link>
+          <ul className='hidden md:flex text-base lg:text-xl gap-5 2xl:gap-10'>
             <li>
               <Link href='/feed'>
                 <span className='mobile-display'>Feed</span>
@@ -68,7 +71,7 @@ export default function Nav({session}:Props) {
               </Link>
             </li>
           </ul>
-          <div className={styles['nav-links']}>
+          <div className="hidden text-base lg:text-xl md:flex gap-5 2xl:gap-10">
             {session ? (
               <>
                 <div>Hello, {session.user.name}</div>

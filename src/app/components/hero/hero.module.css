@@ -37,21 +37,6 @@
 .accent {
     color: var(--bg-main);
 }
-.btn-cta {
-    width: 150px;
-    height: 40px;
-    color: #fff;
-    font-size: 1.2rem;
-    background-color: var(--bg-main);
-    border: none;
-    border-radius: 7px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.btn-cta:hover {
-    background-color: var(--bg-main-hover);
-}
 
 @media only screen and (min-width:451px) {
     .hero-cta-contn {

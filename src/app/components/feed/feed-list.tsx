@@ -17,7 +17,7 @@ export default function FeedList({initialArticles, take}:Props) {
     const [skip, setSkip] = useState(take);
 
     return (
-            <div className="  xl:grid xl:grid-cols-2 gap-8">                            
+            <div className="flex flex-col xl:grid xl:grid-cols-2 gap-8">                            
                 {articles.map((article:Article) => (
                     <FeedItem 
                         key={article.id}

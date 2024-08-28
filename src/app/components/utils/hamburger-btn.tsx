@@ -11,7 +11,7 @@ export default function HamburgerBtn(props:MobileNavProps) {
 
     return (
         <button onClick={toggleMobileMenu} 
-            className={`btn-no-style ${styles.hamburger} ${getActiveStyle()}`}>
+            className={`btn-no-style ${styles.hamburger} ${getActiveStyle()} block md:hidden`}>
             <div className={`${styles.bar}`}></div>
         </button>
     )

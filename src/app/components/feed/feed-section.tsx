@@ -1,12 +1,10 @@
-import { ErrorBoundary } from "react-error-boundary";
-import DefaultError from "../errors/defaultError";
-import FeedList from "./feed-list";
-import styles from "../../page.module.css";
-import FeedSettings from "./feed-settings";
-import CustomizeFeed from "../setting/feed/CustomizeFeed";
-import BlgContainer from "../utils/containers/BlgContainer";
 import { getArticles } from "@/actions/articleActions";
 import { Article } from "@prisma/client";
+import { ErrorBoundary } from "react-error-boundary";
+import styles from "../../page.module.css";
+import DefaultError from "../errors/defaultError";
+import BlgContainer from "../utils/containers/BlgContainer";
+import FeedList from "./feed-list";
 
 const defaultLimit = 20;
 
@@ -29,8 +27,8 @@ const FeedSection = async () =>{
         <BlgContainer>
             <div className={styles["feed-container"]}>
                 <div className="flex items-center justify-between">
-                    <h1 className="h1-dark">Your Gaming Feed</h1>
-                    <a className="text-xl underline" href="/feed">
+                    <h1 className="h1-dark text-xl md:text-3xl">Your Gaming Feed</h1>
+                    <a className="text-lg md:text-xl underline" href="/feed">
                         View All
                     </a>
                 </div>
