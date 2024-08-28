@@ -8,6 +8,13 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",    
   ],
   theme: {
+    screens: {
+      'sm': '640px',
+      'md':'891px',      
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px'
+    },
     extend: {
       backgroundImage: {
         "hero-desktop": "linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8) ), url('/images/hero/hero-desktop.webp')",

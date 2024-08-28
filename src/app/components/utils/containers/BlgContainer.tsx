@@ -5,7 +5,7 @@ type Props = {
 
 export default function BlgContainer({children}:Props) {
   return (
-    <div className='bg-container p-8 rounded-2xl'>
+    <div className='bg-container p-5 md:p-8 rounded-2xl'>
         {children}
     </div>
   )
