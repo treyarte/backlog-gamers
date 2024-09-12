@@ -24,7 +24,7 @@ export default function FeedList({initialArticles, take}:Props) {
                         title={article.title} 
                         date={formatDate(article.updatedAt)}
                         url={article.url} 
-                        imgUrl={article.imageUrl} 
+                        imgUrl={article.imageUrl ?? ""} 
                         article={article}
                     />
                 ))}                
