@@ -48,8 +48,8 @@ model Article {
   title            String
   url              String
   shortDescription String
-  imageUrl         String
-  content          String
+  imageUrl         String?
+  content          String?
 
   @@map("articles")
 }
