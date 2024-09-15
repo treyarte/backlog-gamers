@@ -13,10 +13,10 @@ export default function PageContainer({children}:Props) {
             </div>
             <div className="hidden lg:flex flex-col gap-7 flex-grow min-w-80">
                 <BlgContainer>
-                    <div>My Ad</div>
+                    <div>Sidebar 1</div>
                 </BlgContainer>
                 <BlgContainer>
-                    <div>My Ad 2</div>
+                    <div>Sidebar 2</div>
                 </BlgContainer>
             </div>
         </div>

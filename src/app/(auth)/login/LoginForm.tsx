@@ -40,10 +40,10 @@ export default function LoginForm() {
         <div>
             <TextField                
                 error={!!errors.email}
-                sx={{width: '100%'}}        
+                sx={{width: '100%', borderColor: 'white', color: 'white'}}        
                 variant='outlined'
-                label='Email'
-                {...register("email")}
+                label='Email'                
+                {...register("email")}            
             />
             <div className='input-error'>{errors.email?.message}</div>
         </div>

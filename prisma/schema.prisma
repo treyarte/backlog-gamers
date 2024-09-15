@@ -45,9 +45,11 @@ model Article {
   id               String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt        DateTime @db.Date
   updatedAt        DateTime @db.Date
+  articleDate      DateTime @db.Date
   title            String
   url              String
   shortDescription String
+  articleSite      Int
   imageUrl         String?
   content          String?
 

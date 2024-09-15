@@ -4,6 +4,7 @@ import styles from "./feed-item.module.css";
 import { articleType } from "@/app/types/article";
 import { articleSiteType, articleSitesDisplay, articleSitesEnum } from "@/app/models/enums/articleSitesEnum";
 import { Article } from "@prisma/client";
+import { formatDate } from "@/app/utils/dateHelpers";
 
 
 type propsType = {
@@ -16,15 +17,11 @@ type propsType = {
 
 export default function NewsItem(props:propsType) {
     const {
-        title,
-        url,
-        date,
-        imgUrl,
         article
     } = props;
 
     const displaySiteName = ():articleSiteType => {
-        const siteEnum:articleSitesEnum = parseInt("fdsaa");
+        const siteEnum:articleSitesEnum = parseInt(`${article.articleSite}`);
         if(isNaN(siteEnum) || articleSitesEnum[siteEnum] == null){
             return articleSitesDisplay[articleSitesEnum.Unknown];
         }
@@ -36,8 +33,8 @@ export default function NewsItem(props:propsType) {
         <article className={`${styles["feed-item"]} ${styles["feed-item-dark"]}`}>
             <div className={styles["feed-left"]}>
                 <div className={styles["img-container"]}>
-                    <a target="_blank" href={url}>
-                        <img src={`${imgUrl}`} alt="News Image" />
+                    <a target="_blank" href={article.url}>
+                        <img src={`${article.imageUrl}`} alt="News Image" />
                     </a>
                 </div>
             </div>
@@ -53,11 +50,11 @@ export default function NewsItem(props:propsType) {
                                     </a>
                     </div>
                     <div className={styles["date-text"]}>
-                        {date}
+                        {formatDate(article.articleDate)}
                     </div>
                     <div className={`${styles["desc-text"]} ellipsis-text`}>
-                        <a className="link-no-style" target="_blank" href={url}>
-                            {title}
+                        <a className="link-no-style" target="_blank" href={article.url}>
+                            {article.title}
                         </a>
                     </div>
 
