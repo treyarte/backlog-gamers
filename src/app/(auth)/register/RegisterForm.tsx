@@ -1,5 +1,4 @@
 'use client';
-import { TextField } from '@mui/material';
 import React from 'react'
 import styles from './styles.module.css';
 import SocialLogin from '../login/SocialLogin';
@@ -9,6 +8,7 @@ import { RegisterSchema, registerSchema } from '@/app/schemas/registerSchema';
 import { registerUser } from '@/actions/authActions';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
+import { Input } from '@nextui-org/react';
 
 export default function RegisterForm() {
     const {handleSubmit, register, formState: {errors, isValid, isSubmitting}, setError, getValues} = useForm<RegisterSchema>({
@@ -35,30 +35,28 @@ export default function RegisterForm() {
     return (
         <form className={styles.registerForm} onSubmit={handleSubmit(onSubmit)}>
             <div>
-                <TextField
-                    error={!!errors.displayName}
-                    sx={{width: '100%'}}        
-                    variant='outlined'
+                <Input
+                    isInvalid={!!errors.displayName}
+                           
+                    
                     label='Display Name'
                     {...register("displayName")}
                 />
                 <div className={styles.inputError}>{errors.displayName?.message}</div>
             </div>
             <div>
-                <TextField
-                    error={!!errors.email}
-                    sx={{width: '100%'}}        
-                    variant='outlined'
+                <Input
+                    isInvalid={!!errors.email}
+                          
+                    
                     label='Email'
                     {...register("email")}
                 />
                 <div className={styles.inputError}>{errors.email?.message}</div>
             </div>
             <div>
-                <TextField
-                    error={!!errors.password}
-                    sx={{width: '100%'}}        
-                    variant='outlined'
+                <Input
+                    isInvalid={!!errors.password}
                     label='Password'
                     type='password'
                     {...register("password")}
@@ -66,10 +64,8 @@ export default function RegisterForm() {
                 <div className={styles.inputError}>{errors.password?.message}</div>
             </div>
             <div>
-                <TextField
-                    error={!!errors.passwordConfirm}
-                    sx={{width: '100%'}}        
-                    variant='outlined'
+                <Input
+                    isInvalid={!!errors.passwordConfirm}
                     label='Password Confirmation'
                     type='password'
                     {...register("passwordConfirm")}

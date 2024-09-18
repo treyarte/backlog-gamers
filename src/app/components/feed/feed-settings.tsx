@@ -1,9 +1,5 @@
 "use client";
 
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import SettingsIcon from '@mui/icons-material/Settings';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { Accordion, AccordionDetails, AccordionSummary, Box, Drawer } from '@mui/material';
 import { useState } from 'react';
 import styles from "./feed-settings.module.css";
 
@@ -26,7 +22,7 @@ const FeedSettings = () => {
 
     return (
         <div>
-            <button onClick={() => setIsOpen(!isOpen)} className={`${styles["btn-feed"]} btn-blg`}>
+            {/* <button onClick={() => setIsOpen(!isOpen)} className={`${styles["btn-feed"]} btn-blg`}>
                 <SettingsIcon/>
                 Feed Settings
             </button>
@@ -56,7 +52,7 @@ const FeedSettings = () => {
                     </Accordion>
                 </div>
                 
-            </Drawer>
+            </Drawer> */}
         </div>
     )
 }
