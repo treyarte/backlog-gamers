@@ -1,15 +1,15 @@
 'use client';
-import SettingsIcon from '@mui/icons-material/Settings';
+// import SettingsIcon from '@mui/icons-material/Settings';
 import { useState } from "react";
 import styles from "./customizeFeedStyles.module.css";
-import { Dialog, DialogContent, DialogTitle, Slide } from '@mui/material';
-import { TransitionProps } from '@mui/material/transitions';
+// import { Dialog, DialogContent, DialogTitle, Slide } from '@mui/material';
+// import { TransitionProps } from '@mui/material/transitions';
 import React from 'react';
-import SourcesTab from '@/app/test/SourcesTab';
+// import SourcesTab from '@/app/test/SourcesTab';
 import TagsTab from '@/app/test/TagsTab';
 import Tabs from '@/app/test/Tabs';
 import {v4 as uuidV4} from 'uuid';
-import CloseIcon from '@mui/icons-material/Close';
+// import CloseIcon from '@mui/icons-material/Close';
 
 /**
  * Component for customizes News Sources and Tags
@@ -20,7 +20,8 @@ export default function CustomizeFeed() {
     const toggleDialog = () => (setIsOpen(!isOpen));
   return (
     <>
-        <button onClick={() => setIsOpen(!isOpen)} className={`${styles.btnFeed} btn-blg`}>
+    <div></div>
+        {/* <button onClick={() => setIsOpen(!isOpen)} className={`${styles.btnFeed} btn-blg`}>
             <SettingsIcon/>
             Feed Settings
         </button>
@@ -54,16 +55,16 @@ export default function CustomizeFeed() {
               />
           </div>
           </DialogContent>
-      </Dialog>
+      </Dialog> */}
     </>
   )
 }
 
-const Transition = React.forwardRef(function Transition(
-    props: TransitionProps & {
-      children: React.ReactElement;
-    },
-    ref: React.Ref<unknown>,
-  ) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
+// const Transition = React.forwardRef(function Transition(
+//     props: TransitionProps & {
+//       children: React.ReactElement;
+//     },
+//     ref: React.Ref<unknown>,
+//   ) {
+//     return <Slide direction="up" ref={ref} {...props} />;
+//   });

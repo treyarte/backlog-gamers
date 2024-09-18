@@ -1,7 +1,6 @@
 import { RegisterSchema } from "@/app/schemas/registerSchema";
 import { hashPassword } from "@/libs/bcryptHelper";
 import { convertDateToUtc } from "@/libs/dateHelpers";
-import dbConnect from "@/libs/dbConnect";
 import { prisma } from "@/libs/prisma";
 import { User } from "@prisma/client";
 
