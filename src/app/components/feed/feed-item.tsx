@@ -1,10 +1,13 @@
-import { faComment, faShareFromSquare, faThumbsUp } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "./feed-item.module.css";
-import { articleType } from "@/app/types/article";
 import { articleSiteType, articleSitesDisplay, articleSitesEnum } from "@/app/models/enums/articleSitesEnum";
-import { Article } from "@prisma/client";
 import { formatDate } from "@/app/utils/dateHelpers";
+import { Article } from "@prisma/client";
+import styles from "./feed-item.module.css";
+import { AiFillLike } from "react-icons/ai";
+import { AiFillMessage } from "react-icons/ai";
+import { AiOutlineComment } from "react-icons/ai";
+import { AiOutlineShareAlt } from "react-icons/ai";
+import { ArticleDto } from "@/app/models/ArticleDto";
+
 
 
 type propsType = {
@@ -12,7 +15,7 @@ type propsType = {
     url:string
     date:string
     imgUrl:string
-    article:Article
+    article:ArticleDto
 }
 
 export default function NewsItem(props:propsType) {
@@ -60,15 +63,15 @@ export default function NewsItem(props:propsType) {
 
                     <div className={styles["feed-actions"]}>
                         <button className={`${styles["feed-action-item"]} btn-no-style`}>
-                            <FontAwesomeIcon icon={faThumbsUp} />
+                            <AiFillLike />
                             32
                         </button>
                         <button className={`${styles["feed-action-item"]} btn-no-style`}>
-                            <FontAwesomeIcon icon={faComment} />
+                            <AiFillMessage />
                             124
                         </button >
                         <button className={`${styles["feed-action-item"]} btn-no-style`}>
-                            <FontAwesomeIcon icon={faShareFromSquare} />
+                            <AiOutlineShareAlt />
                             12
                         </button>
                     </div>

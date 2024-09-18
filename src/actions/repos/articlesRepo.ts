@@ -8,6 +8,14 @@ export class ArticlesRepo {
                 take,
                 orderBy: {
                     updatedAt: 'desc'
+                },
+                select: {
+                    id:true,
+                    title:true,
+                    url:true,
+                    imageUrl:true,
+                    articleDate: true,
+                    articleSite: true,
                 }
             }));
 
