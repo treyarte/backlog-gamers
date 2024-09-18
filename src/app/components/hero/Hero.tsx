@@ -2,9 +2,10 @@
 
 import React from 'react'
 import styles from './hero.module.css';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import {motion} from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { AiOutlineArrowDown } from "react-icons/ai";
+
 
 
 export default function Hero() {
@@ -38,7 +39,7 @@ export default function Hero() {
             }}
             
         >
-          <ArrowDownwardIcon  fontSize='large'/>          
+          <AiOutlineArrowDown style={{fontSize: '3rem'}} />          
         </motion.button>
       </div>      
     </section>

@@ -5,11 +5,12 @@ import styles from "../../page.module.css";
 import DefaultError from "../errors/defaultError";
 import BlgContainer from "../utils/containers/BlgContainer";
 import FeedList from "./feed-list";
+import { ArticleDto } from "@/app/models/ArticleDto";
 
 const defaultLimit = 20;
 
 const FeedSection = async () =>{
-    let data:Article[] = [];
+    let data:ArticleDto[] = [];
 
     try {
         const res = await getArticles(0, defaultLimit);

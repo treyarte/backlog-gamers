@@ -5,6 +5,11 @@ import Nav from './components/navigation/nav'
 import { auth } from '@/auth'
 import Providers from './components/utils/Providers'
 import NavButtom from './components/navigation/NavButtom'
+import Script from 'next/script'
+import { GoogleAnalytics } from '@next/third-parties/google'
+
+
+const GA_TRACKING_ID = 'G-NT4F92GHTN'; 
 
 const roboto = Roboto({
   weight: '400',
@@ -76,6 +81,7 @@ export default async function RootLayout({
             {children}
           </main>
         </Providers>
+        <GoogleAnalytics gaId={GA_TRACKING_ID} />
       </body>
     </html>
   )
