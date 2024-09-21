@@ -7,7 +7,7 @@ import { AiFillMessage } from "react-icons/ai";
 import { AiOutlineComment } from "react-icons/ai";
 import { AiOutlineShareAlt } from "react-icons/ai";
 import { ArticleDto } from "@/app/models/ArticleDto";
-
+import {decode} from "html-entities";
 
 
 type propsType = {
@@ -45,6 +45,17 @@ export default function NewsItem(props:propsType) {
             <div className={styles["feed-right"]}>
                 <div className={styles["feed-details"]}>
                     <div>
+                        <div className="md:text-xl font-semibold ellipsis-text">
+                            <a className="link-no-style" target="_blank" href={article.url}>
+                                {decode(article.title, {level: 'html5'})}
+                            </a>
+                        </div>
+                        <div className={styles["date-text"]}>
+                            {formatDate(article.articleDate)}
+                        </div>
+                    </div>
+
+                    <div>
                         Source: <a 
                                     className={styles.source} 
                                     target="blank"
@@ -52,15 +63,6 @@ export default function NewsItem(props:propsType) {
                                         {displaySiteName().name}
                                     </a>
                     </div>
-                    <div className={styles["date-text"]}>
-                        {formatDate(article.articleDate)}
-                    </div>
-                    <div className={`${styles["desc-text"]} ellipsis-text`}>
-                        <a className="link-no-style" target="_blank" href={article.url}>
-                            {article.title}
-                        </a>
-                    </div>
-
                     <div className={styles["feed-actions"]}>
                         <button className={`${styles["feed-action-item"]} btn-no-style`}>
                             <AiFillLike />

@@ -2,8 +2,8 @@
 .registerForm {
     display: flex;
     flex-flow: column wrap;
-    width: 100%;
-    max-width: 700px;
+    /* width: 100%; */
+    /* max-width: 700px; */
 }
     .authContainer {
         gap: 30px;

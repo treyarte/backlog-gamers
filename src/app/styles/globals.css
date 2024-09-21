@@ -28,10 +28,20 @@
 d21cd6 redish thing
 */
 
+/**
+  Next JS Stuff
+**/
 next-route-announcer div {
   margin: 0 !important;
 }
+[data-overlay-container=true] {
+  height: 100%;
+  width: 100%;
+}
 
+/**
+  Global CSS
+**/
 * {
   box-sizing: border-box;
   padding: 0;
@@ -42,12 +52,19 @@ next-route-announcer div {
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
-  height: 100%;
+  overflow-x: hidden;  
   font-size: 1rem;  
   color: var(--main-text-color);
   scroll-behavior: smooth;
 }
+  html,
+  body {
+    height: 100%;
+  }
+
+  main {
+    /* height: calc(100vh - var(--navbar-height)) */
+  }
 
 .page-layout {
   max-width: 1280px;  
