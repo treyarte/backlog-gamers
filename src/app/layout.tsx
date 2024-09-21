@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Backlog Gamers',
-    description: '',
+    description: 'Stay up-to-date on the latest gaming news with our aggregated news feed.',
     url: 'https://backloggamers.com',
     siteName: 'Backlog Gamers',
     // images: [
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Backlog Gamers',
-    description: '',
+    description: 'Stay up-to-date on the latest gaming news with our aggregated news feed.',
     siteId: '',
     creator: '@BacklogXGamers',
     creatorId: '',
@@ -81,7 +81,7 @@ export default async function RootLayout({
             {children}
           </main>
         </Providers>
-        <GoogleAnalytics gaId={GA_TRACKING_ID} />
+        {/* <GoogleAnalytics gaId={GA_TRACKING_ID} /> */}
       </body>
     </html>
   )

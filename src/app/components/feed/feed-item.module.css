@@ -38,9 +38,6 @@
     font-size: 1rem;
     color: var(--lesser-text-color)
 }
-.desc-text {
-    line-height: 1.4;
-}
 
 .feed-action-item:global(.btn-no-style) {
     display: flex;
