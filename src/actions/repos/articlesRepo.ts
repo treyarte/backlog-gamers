@@ -25,4 +25,15 @@ export class ArticlesRepo {
             throw error;
         }
     }
+
+    public async getArticleBySlug(slug:string) {
+        try {
+            return prisma.article.findFirst({
+             where: {slug}
+            })
+        } catch (error) {
+            console.error(error);        
+            throw error;
+        }
+    }
 }

@@ -18,6 +18,10 @@ export default auth((req) => {
         return NextResponse.next();
     }
     
+    if(publicRoutes.some(r => nextUrl.pathname.includes(r))) {
+        return NextResponse.next();
+    }
+
     if(isAuthRoute) {
         if(isLoggedIn) {
             return NextResponse.redirect(new URL('/', nextUrl));

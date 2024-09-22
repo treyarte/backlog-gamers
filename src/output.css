@@ -585,7 +585,8 @@ video {
   --bg-main-hover: #519fe9;
   --lesser-text-color:#9e9e9e;
   --link-color:#fff;
-  --error-text:#d32f2f;
+  /* --error-text:#d32f2f; */
+  --error-text:#FF6969;
   --default-border:#B4B4B8;
   --full-height: calc(100vh - var(--navbar-height));
 }

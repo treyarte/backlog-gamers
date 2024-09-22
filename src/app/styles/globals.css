@@ -15,7 +15,8 @@
   --bg-main-hover: #519fe9;
   --lesser-text-color:#9e9e9e;
   --link-color:#fff;
-  --error-text:#d32f2f;
+  /* --error-text:#d32f2f; */
+  --error-text:#FF6969;
   --default-border:#B4B4B8;
   --main-text-color:#fff;
   --full-height: calc(100vh - var(--navbar-height));
@@ -169,6 +170,8 @@ background: linear-gradient(90deg, rgba(223,95,73,1) 0%, rgba(252,131,94,1) 50%,
 
 .input-error {
   min-height: 24px;
+  display: flex;
+  align-items: center;
   color:var(--error-text);
 }
 

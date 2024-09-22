@@ -50,6 +50,7 @@ model Article {
   url              String
   shortDescription String
   articleSite      Int
+  slug             String
   imageUrl         String?
   content          String?
 
