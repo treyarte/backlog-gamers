@@ -71,6 +71,14 @@ export default function NavMobile(props:MobileNavProps) {
             <li>
                 <Link
                     onClick={toggleMobileMenu} 
+                    href='/login'
+                >
+                    Login
+                </Link>
+            </li>
+            <li>
+                <Link
+                    onClick={toggleMobileMenu} 
                     href='/register'
                 >
                     Sign Up

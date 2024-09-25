@@ -38,7 +38,7 @@ export default function LoginForm() {
     }
 
   return (
-    <form className='max-w-md w-full flex flex-col flex-wrap gap-7 sm:w-[512px] w-96 ' onSubmit={handleSubmit(onSubmit)}>
+    <form className='max-w-md w-full flex flex-col flex-wrap gap-7 sm:w-[512px] w-96 h-auto' onSubmit={handleSubmit(onSubmit)}>
         <div>
             <Input
                 isRequired

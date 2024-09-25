@@ -35,7 +35,7 @@ export default function RegisterForm() {
     }
 
     return (
-        <form className={`${styles.registerForm} sm:w-[512px] w-96`} onSubmit={handleSubmit(onSubmit)}>
+        <form className={`${styles.registerForm} sm:w-[512px] w-full`} onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <Input
                     isInvalid={!!errors.displayName}
@@ -80,7 +80,7 @@ export default function RegisterForm() {
                     isDisabled={!isValid} 
                 />
             </div>
-            <HorizontalText text='More ways to login'/>
+            <HorizontalText text='More ways to sign up'/>
             <SocialLogin />
         </form>
     )

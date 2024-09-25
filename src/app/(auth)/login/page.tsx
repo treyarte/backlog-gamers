@@ -1,23 +1,12 @@
 import BlgContainer from '@/app/components/utils/containers/BlgContainer';
-import Image from "next/image";
+import FormLogo from '@/app/components/utils/containers/FormLogo';
 import { FiLogIn } from "react-icons/fi";
 import LoginForm from './LoginForm';
-import FormLogo from '@/app/components/utils/containers/FormLogo';
-// .registerContainer,
-// .registerForm {
-//     display: flex;
-//     flex-flow: column wrap;
-//     width: 100%;
-//     max-width: 700px;
-// }
-//     .registerContainer {
-//         gap: 30px;
-//         padding: 20px;
-//     }
+
 export default function Loginpage() {
   return (
-    <div className='flex justify-center h-[90vh] pl-2 pr-2 mt-2 items-center'>
-        <BlgContainer>
+    <div className='flex sm:justify-center h-[90vh] sm:pl-2 sm:pr-2 pl-7 pr-7 mt-content'>
+        <BlgContainer classes='w-full sm:w-auto'>
             <FormLogo />
             <div className='flex flex-row gap-2 justify-center mb-4'>            
                 <FiLogIn size={38} />
