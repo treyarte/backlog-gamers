@@ -41,6 +41,9 @@ const config: Config = {
       boxShadow: {
         'custom': '0px 2px 8px 0px rgba(99, 99, 99, 0.2)',
       },
+      spacing: {
+        'content': 'calc(var(--navbar-height) + 1.75rem)'
+      },
       colors: {
         'bg-border': '#4D4D4D',        
       }

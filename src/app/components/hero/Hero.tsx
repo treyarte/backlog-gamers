@@ -5,6 +5,7 @@ import styles from './hero.module.css';
 import {motion} from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { AiOutlineArrowDown } from "react-icons/ai";
+import Link from 'next/link';
 
 
 
@@ -20,10 +21,12 @@ export default function Hero() {
         Stay up-to-date on the latest gaming news with our aggregated news feed.
       </p>
       <div>
-        <button className="py-2 px-8 md:text-2xl xl:text-4xl rounded-md 
+        <Link 
+            href="/register"
+            className="py-2 px-8 md:text-2xl xl:text-4xl rounded-md 
                            bg-gradient-main hover:bg-gradient-hover
                             text-xl
-                           ">Sign Up Today</button>
+                           ">Sign Up Today</Link>
       </div>                
       <div className='flex-grow flex items-center'>
         <motion.button

@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import { Input } from '@nextui-org/react';
 import HorizontalText from '@/app/utils/HorizontalText';
+import SubmitButton from '@/app/components/utils/buttons/SubmitButton';
 
 export default function RegisterForm() {
     const {handleSubmit, register, formState: {errors, isValid, isSubmitting}, setError, getValues} = useForm<RegisterSchema>({
@@ -34,7 +35,7 @@ export default function RegisterForm() {
     }
 
     return (
-        <form className={`${styles.registerForm} sm:w-[512px] w-96`} onSubmit={handleSubmit(onSubmit)}>
+        <form className={`${styles.registerForm} sm:w-[512px] w-full`} onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <Input
                     isInvalid={!!errors.displayName}
@@ -74,15 +75,12 @@ export default function RegisterForm() {
                 <div className={styles.inputError}>{errors.passwordConfirm?.message}</div>
             </div>
             <div className={styles.formBtnContainer}>
-                <button 
-                    disabled={!isValid}
-                    className={`${styles.btnAuth} btn-blg [&&]:bg-black [&&]:hover:bg-opacity-90 
-                        [&&]:disabled:bg-opacity-70 disabled:cursor-not-allowed`}
-                    >
-                    Register
-                </button>
+                <SubmitButton 
+                    text='Register' 
+                    isDisabled={!isValid} 
+                />
             </div>
-            <HorizontalText text='More ways to login'/>
+            <HorizontalText text='More ways to sign up'/>
             <SocialLogin />
         </form>
     )

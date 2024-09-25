@@ -7,12 +7,11 @@ import PageContainer from './components/utils/containers/PageContainer';
 export default async function Home() {
   
   return (
-    	<>
+    <>
         <Hero />
         <PageContainer>
-          <FeedSection />   
+            <FeedSection />
         </PageContainer>
-      </>
-    	
+    </>    	
   )
 }

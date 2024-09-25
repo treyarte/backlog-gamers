@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import { Button, Input } from '@nextui-org/react';
 import HorizontalText from '@/app/utils/HorizontalText';
+import SubmitButton from '@/app/components/utils/buttons/SubmitButton';
 
 /**
  * Form for handling login
@@ -37,7 +38,7 @@ export default function LoginForm() {
     }
 
   return (
-    <form className='max-w-md w-full flex flex-col flex-wrap gap-7 sm:w-[512px] w-96 ' onSubmit={handleSubmit(onSubmit)}>
+    <form className='max-w-md w-full flex flex-col flex-wrap gap-7 sm:w-[512px] w-96 h-auto' onSubmit={handleSubmit(onSubmit)}>
         <div>
             <Input
                 isRequired
@@ -59,14 +60,10 @@ export default function LoginForm() {
             <div className='input-error'>{errors.password?.message}</div>
         </div>
         <div>
-            
-            <Button
-                isDisabled={!isValid}
-                className={`w-full py-2 [&&]:bg-[#8e5bdb] [&&]:hover:bg-opacity-90 text-white text-xl
-                    [&&]:disabled:bg-opacity-70 disabled:cursor-not-allowed`}
-                >
-                Login
-            </Button>
+            <SubmitButton 
+                text='Login' 
+                isDisabled={!isValid} 
+            />
         </div>
         <HorizontalText text='More ways to login'/>
         <SocialLogin />

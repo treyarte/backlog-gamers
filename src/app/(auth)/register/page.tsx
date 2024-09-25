@@ -7,11 +7,11 @@ import FormLogo from '@/app/components/utils/containers/FormLogo';
 
 export default function RegisterPage() {
     return (
-        <div className="flex justify-center h-[90vh] pl-2 pr-2 mt-2 items-center">
-            <BlgContainer>
+        <div className="flex sm:justify-center h-[90vh] sm:pl-2 sm:pr-2 pl-7 pr-7 mt-content mb-7">
+            <BlgContainer classes='w-full sm:w-auto'>
                 <FormLogo />
                 <div className="flex flex-row gap-2 justify-center mb-4">
-                    <FaUserPlus size={38} />
+                    <FaUserPlus className='h-10 w-10' />
                     <h1 className='font-bold text-4xl'>Sign Up</h1>
                 </div>
                 <RegisterForm/>        
