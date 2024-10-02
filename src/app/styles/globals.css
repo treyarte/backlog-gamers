@@ -86,9 +86,18 @@ h3
  {
   color:var(--main-text-color);
 }
+
+h1 {
+  font-weight: 600;
+  font-size: 1.875rem; /* 30px */;
+  line-height: 2.25rem; /* 36px */;
+}
+
 button {
   cursor: pointer;
 }
+
+
 
 .h1-dark, h1 {
 	/* font-size: 2rem;	 */

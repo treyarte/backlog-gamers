@@ -9,7 +9,7 @@ import Script from 'next/script'
 import { GoogleAnalytics } from '@next/third-parties/google'
 
 
-const GA_TRACKING_ID = 'G-NT4F92GHTN'; 
+const GA_TRACKING_ID = process.env.GA_TRACKING_ID ?? ""; 
 
 const roboto = Roboto({
   weight: '400',
@@ -74,15 +74,15 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${roboto.className} bg-dark`}>
         <Providers>
-          <header className='w-full fixed top-0 z-50'>
+          <header className='w-full fixed top-0 z-40'>
             <Nav session={session}/>
           </header>
           <main className='flex flex-col gap-7'>        
             {children}
           </main>
         </Providers>
-        {/* <GoogleAnalytics gaId={GA_TRACKING_ID} /> */}
       </body>
+      <GoogleAnalytics gaId={GA_TRACKING_ID} />
     </html>
   )
 }

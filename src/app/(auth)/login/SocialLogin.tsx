@@ -18,6 +18,7 @@ export default function SocialLogin() {
                 radius='full'
                 aria-label='Google Social Login'
                 className='bg-white'
+                onClick={() => onClick("google")}
             >
                 <FcGoogle size={25} />
             </Button>     
@@ -26,6 +27,7 @@ export default function SocialLogin() {
                 radius='full'
                 aria-label='Discord Social Login'
                 className='bg-white'
+                onClick={() => onClick("discord")}
             >
                 <FaDiscord size={25} color='#7289da' />                
             </Button>          
