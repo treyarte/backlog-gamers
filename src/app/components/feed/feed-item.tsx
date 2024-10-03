@@ -66,15 +66,15 @@ export default function NewsItem(props:propsType) {
                     <div className={styles["feed-actions"]}>
                         <button className={`${styles["feed-action-item"]} btn-no-style`}>
                             <AiFillLike />
-                            32
+                            {article.likes}
                         </button>
                         <button className={`${styles["feed-action-item"]} btn-no-style`}>
                             <AiFillMessage />
-                            124
+                            {Array.isArray(article.comments) ? article.comments.length : ""}
                         </button >
                         <button className={`${styles["feed-action-item"]} btn-no-style`}>
                             <AiOutlineShareAlt />
-                            12
+                            {article.shares}
                         </button>
                     </div>
                 </div>
