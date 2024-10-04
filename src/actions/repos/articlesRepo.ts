@@ -1,4 +1,5 @@
 import { prisma } from "@/libs/prisma";
+import { toast } from "react-toastify";
 
 export class ArticlesRepo {
     public async getArticles(skip:number, take:number) {
@@ -16,6 +17,7 @@ export class ArticlesRepo {
                     imageUrl:true,
                     articleDate: true,
                     articleSite: true,
+                    likes:true
                 }
             }));
 
@@ -36,4 +38,6 @@ export class ArticlesRepo {
             throw error;
         }
     }
+
+
 }

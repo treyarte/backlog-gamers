@@ -1,7 +1,7 @@
 'use server';
 import { loginSchema, LoginSchema } from "@/app/schemas/loginSchema";
 import { registerSchema, RegisterSchema } from "@/app/schemas/registerSchema";
-import { signIn, signOut } from "@/auth";
+import { auth, signIn, signOut } from "@/auth";
 import { sanitizeInput } from "@/libs/serverSanitizers";
 import { ActionResults } from "@/types";
 import { AuthError } from "next-auth";
@@ -11,6 +11,23 @@ import { hashPassword } from "@/libs/bcryptHelper";
 import { convertDateToUtc } from "@/libs/dateHelpers";
 
 const userRepo = new UserRepo();
+
+export async function getAuthUserId() : Promise<string> {
+    try {
+        const session = await auth();
+        const userId = session?.user?.id;
+
+        if(!userId) {
+            throw new Error("Unauthorized");
+        }
+
+        return userId;
+
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
 
 /**
  * Sign In a user

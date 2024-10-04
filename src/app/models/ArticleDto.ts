@@ -1,4 +1,4 @@
-import { Comment } from "@prisma/client";
+import { Comment, Like } from "@prisma/client";
 import { articleSitesEnum } from "./enums/articleSitesEnum";
 
 export type ArticleDto = {
@@ -8,7 +8,7 @@ export type ArticleDto = {
     imageUrl:string | null;
     articleDate:Date;
     articleSite:articleSitesEnum;
-    likes:number;
+    likes:Like[];
     shares:number;
     comments:Comment[];
 }

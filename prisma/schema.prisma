@@ -18,6 +18,7 @@ model User {
   updatedAt     DateTime  @updatedAt @db.Date
   account       Account[]
   comments      Comment[]
+  articleLikes  Like[]
 }
 
 model Account {
@@ -54,10 +55,10 @@ model Article {
   slug             String
   imageUrl         String?
   content          String?
-  likes            Int       @default(0)
   shares           Int       @default(0)
   clicks           Int       @default(0)
   comments         Comment[]
+  likes            Like[]
 
   @@map("articles")
 }
@@ -73,4 +74,16 @@ model Comment {
   user      User?    @relation(fields: [userId], references: [id])
 
   @@map("comments")
+}
+
+model Like {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id])
+  articleId String   @db.ObjectId
+  article   Article  @relation(fields: [articleId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, articleId])
+  @@map("likes")
 }
