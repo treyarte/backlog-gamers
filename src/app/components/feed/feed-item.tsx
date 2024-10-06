@@ -70,22 +70,33 @@ export default function NewsItem(props:propsType) {
                                     </a>
                     </div>
                     <div className={styles["feed-actions"]}>
+                        <div className="flex gap-1">
                         <LikeButton 
                             articleId={article.id}
                             hasLiked={article.likes?.map(l => l.userId).includes(userId.data?.user.id ?? "")}
                         />
+                            {article.likes?.length ?? 0 > 0 ? article.likes.length : "" }
+                            </div>
                         {/* <button className={`${styles["feed-action-item"]} btn-no-style`}>
                             <AiFillLike />
                             {article.likes}
                         </button> */}
+                        <div className="flex gap-1">
+                            <div>
                         <button className={`${styles["feed-action-item"]} btn-no-style`}>
-                            <AiFillMessage />
+                            <AiFillMessage size={24} />
                             {Array.isArray(article.comments) ? article.comments.length : ""}
                         </button >
+                        </div>
+                        </div>
+                        <div className="flex gap-1">
+                            <div>
                         <button className={`${styles["feed-action-item"]} btn-no-style`}>
-                            <AiOutlineShareAlt />
+                            <AiOutlineShareAlt size={24}/>
                             {article.shares}
                         </button>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -23,8 +23,7 @@ export async function getAuthUserId() : Promise<string> {
 
         return userId;
 
-    } catch (error) {
-        console.error(error);
+    } catch (error) {        
         throw error;
     }
 }
