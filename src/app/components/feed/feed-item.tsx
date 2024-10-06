@@ -1,3 +1,4 @@
+'use client';
 import { articleSiteType, articleSitesDisplay, articleSitesEnum } from "@/app/models/enums/articleSitesEnum";
 import { formatDate } from "@/app/utils/dateHelpers";
 import { Article } from "@prisma/client";
@@ -8,6 +9,9 @@ import { AiOutlineComment } from "react-icons/ai";
 import { AiOutlineShareAlt } from "react-icons/ai";
 import { ArticleDto } from "@/app/models/ArticleDto";
 import {decode} from "html-entities";
+import LikeButton from "../utils/buttons/LikeButton";
+import { getAuthUserId } from "@/actions/authActions";
+import { useSession } from "next-auth/react";
 
 
 type propsType = {
@@ -23,6 +27,8 @@ export default function NewsItem(props:propsType) {
         article
     } = props;
 
+    const userId = useSession();
+    
     const displaySiteName = ():articleSiteType => {
         const siteEnum:articleSitesEnum = parseInt(`${article.articleSite}`);
         if(isNaN(siteEnum) || articleSitesEnum[siteEnum] == null){
@@ -64,18 +70,33 @@ export default function NewsItem(props:propsType) {
                                     </a>
                     </div>
                     <div className={styles["feed-actions"]}>
-                        <button className={`${styles["feed-action-item"]} btn-no-style`}>
+                        <div className="flex gap-1">
+                        <LikeButton 
+                            articleId={article.id}
+                            hasLiked={article.likes?.map(l => l.userId).includes(userId.data?.user.id ?? "")}
+                        />
+                            {article.likes?.length ?? 0 > 0 ? article.likes.length : "" }
+                            </div>
+                        {/* <button className={`${styles["feed-action-item"]} btn-no-style`}>
                             <AiFillLike />
-                            32
-                        </button>
+                            {article.likes}
+                        </button> */}
+                        <div className="flex gap-1">
+                            <div>
                         <button className={`${styles["feed-action-item"]} btn-no-style`}>
-                            <AiFillMessage />
-                            124
+                            <AiFillMessage size={24} />
+                            {Array.isArray(article.comments) ? article.comments.length : ""}
                         </button >
+                        </div>
+                        </div>
+                        <div className="flex gap-1">
+                            <div>
                         <button className={`${styles["feed-action-item"]} btn-no-style`}>
-                            <AiOutlineShareAlt />
-                            12
+                            <AiOutlineShareAlt size={24}/>
+                            {article.shares}
                         </button>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>
