@@ -12,6 +12,7 @@ import {decode} from "html-entities";
 import LikeButton from "../utils/buttons/LikeButton";
 import { getAuthUserId } from "@/actions/authActions";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 
 type propsType = {
@@ -43,7 +44,14 @@ export default function NewsItem(props:propsType) {
             <div className={styles["feed-left"]}>
                 <div className={styles["img-container"]}>
                     <a target="_blank" href={article.url}>
-                        <img src={`${article.imageUrl}`} alt="News Image" />
+                        <Image                          
+                            src={`${article.imageUrl}`} 
+                            alt="News Image" 
+                            width={0} 
+                            height={0} 
+                            sizes='100vw'
+                            style={{ width: '100%', height: 'auto' }} 
+                        />
                     </a>
                 </div>
             </div>
