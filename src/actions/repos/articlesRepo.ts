@@ -17,7 +17,9 @@ export class ArticlesRepo {
                     imageUrl:true,
                     articleDate: true,
                     articleSite: true,
-                    likes:true
+                    likes:true,
+                    shares:true,
+                    comments:true
                 }
             }));
 
