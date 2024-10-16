@@ -13,7 +13,15 @@ const hosts = [
     "***.kinja-img.com",
     "***.gamespot.com",
     "***.dualshockersimages.com",
-    "***.mos.cms.futurecdn.net"
+    "***.mos.cms.futurecdn.net",
+    "***.ign.com",
+    "***.gamespot.com",
+    "***.reedpopcdn.com",
+    "assetsio.reedpopcdn.com",
+    "***.pcgamer.com",
+    "***.gamedeveloper.com",
+    "***.gamedeveloper.com",
+    "hardcoregamer.com",
 ]
 
 const nextConfig = {

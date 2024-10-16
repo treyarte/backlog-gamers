@@ -1,12 +1,12 @@
-import React from 'react';
-import Image from 'next/image';
-import { AiFillCheckCircle } from "react-icons/ai";
-import { AiFillMinusCircle } from "react-icons/ai";
 import { Switch } from '@nextui-org/react';
+import { ArticleSource } from '@prisma/client';
+import Image from 'next/image';
 
+type Props = {
+    source:ArticleSource;
+}
 
-
-export default function SourceItem() {
+export default function SourceItem({source}:Props) {
     return (
         <div className='flex justify-between border border-bg-border items-center p-3 rounded-2xl '>
             <div className='w-9 rounded-full h-9 bg-white'>
@@ -15,12 +15,12 @@ export default function SourceItem() {
                     height={0}
                     sizes="100vw"
                     style={{ width: '100%', height: 'auto' }} 
-                    src="/images/websites/ign-logo-icon.png"                    
-                    alt="IGN Logo"
+                    src={source.logoSrc ?? ""}
+                    alt="New Source Logo"
                 />
             </div>
             <div className="text-2xl">
-                IGN
+                {source.title}
             </div>
             <div>
             <Switch

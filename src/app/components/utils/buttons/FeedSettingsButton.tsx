@@ -6,8 +6,13 @@ import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure
 import { IoSettingsSharp } from "react-icons/io5";
 import SourceSettings from '../../feed/customize/SourceSettings';
 import {v4 as uuidV4} from "uuid";
+import { ArticleSource } from '@prisma/client';
 
-export default function FeedSettingsButton() {
+type Props = {
+    sources:ArticleSource[];
+}
+
+export default function FeedSettingsButton({sources}:Props) {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     return (
         <>
@@ -33,7 +38,7 @@ export default function FeedSettingsButton() {
                 <Tabs 
                     labels={["Sources", "Tags"]} 
                     tabContainers={[
-                        <SourceSettings key={uuidV4()} />,
+                        <SourceSettings key={uuidV4()} sources={sources}/>,
                         <div key={"444"}>Tags</div>
 
                     ]}                                   
