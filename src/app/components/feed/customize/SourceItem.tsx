@@ -9,7 +9,7 @@ type Props = {
 export default function SourceItem({source}:Props) {
     return (
         <div className='flex justify-between border border-bg-border items-center p-3 rounded-2xl '>
-            <div className='w-9 rounded-full h-9 bg-white'>
+            <div className='w-9 rounded-full h-9 bg-white overflow-hidden'>
                 <Image 
                     width={0}
                     height={0}
@@ -19,7 +19,7 @@ export default function SourceItem({source}:Props) {
                     alt="New Source Logo"
                 />
             </div>
-            <div className="text-2xl">
+            <div className="text-xl">
                 {source.title}
             </div>
             <div>

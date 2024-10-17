@@ -22,6 +22,7 @@ const hosts = [
     "***.gamedeveloper.com",
     "***.gamedeveloper.com",
     "hardcoregamer.com",
+    "backloggamersphotos.blob.core.windows.net"
 ]
 
 const nextConfig = {

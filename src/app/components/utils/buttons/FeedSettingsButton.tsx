@@ -45,8 +45,13 @@ export default function FeedSettingsButton({sources}:Props) {
                 />
               </ModalBody>
               <ModalFooter>
-                <Button color="primary" onPress={onClose}>
-                  Save
+                <Button 
+                    color="primary" 
+                    onPress={onClose}
+                    className=" py-2 [&&]:bg-[#8e5bdb] [&&]:hover:bg-opacity-90 text-white text-xl
+                    [&&]:disabled:bg-opacity-70 disabled:cursor-not-allowed"
+                >
+                  save
                 </Button>
             </ModalFooter>
             </>

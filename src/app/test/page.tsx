@@ -1,10 +1,8 @@
 
-    import { Button } from '@nextui-org/button';
-    import { IoSettingsSharp } from "react-icons/io5";
-import BlgContainer from '../components/utils/containers/BlgContainer';
-import FeedSettingsButton from '../components/utils/buttons/FeedSettingsButton';
-import { ArticleSource } from '@prisma/client';
 import { getSources } from '@/actions/articleSourceActions';
+import { ArticleSource } from '@prisma/client';
+import FeedSettingsButton from '../components/utils/buttons/FeedSettingsButton';
+import BlgContainer from '../components/utils/containers/BlgContainer';
 
 export default async function BtnFeedSettings() {
 
