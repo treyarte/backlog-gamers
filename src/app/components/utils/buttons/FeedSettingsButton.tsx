@@ -19,10 +19,12 @@ export default function FeedSettingsButton({sources}:Props) {
         <Button
             onClick={onOpen}
             endContent={<IoSettingsSharp/>}
-            className="w-full py-2 [&&]:bg-[#8e5bdb] [&&]:hover:bg-opacity-90 text-white text-xl
+            className="w-full max-w-14 sm:max-w-52 py-2 [&&]:bg-[#8e5bdb] [&&]:hover:bg-opacity-90 text-white text-xl
             [&&]:disabled:bg-opacity-70 disabled:cursor-not-allowed"
         >
-            Feed Settings
+            <span className='hidden sm:block'>
+                Feed Settings
+            </span>
         </Button>
         <Modal
             isOpen={isOpen}

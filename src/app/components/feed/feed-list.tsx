@@ -1,12 +1,7 @@
 // 'use client'
-import { getArticles } from "@/actions/articleActions";
-import FeedItem from "./feed-item";
-import styles from "./feed-list.module.css";
-import { articleType } from "@/app/types/article";
-import { formatDate } from "@/app/utils/dateHelpers";
-import { Article } from "@prisma/client";
-import { useState } from "react";
 import { ArticleDto } from "@/app/models/ArticleDto";
+import { formatDate } from "@/app/utils/dateHelpers";
+import FeedItem from "./feed-item";
 
 type Props = {
     initialArticles:ArticleDto[];

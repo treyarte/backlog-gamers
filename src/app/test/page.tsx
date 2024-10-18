@@ -11,8 +11,7 @@ export default async function BtnFeedSettings() {
     try {
         const res = await getSources();     
         if(res.status === 'success') {
-            sources = res.data;
-            console.info(sources);
+            sources = res.data;            
         }
     } catch (error) {
         throw new Error("Failed to find sources");

@@ -6,10 +6,15 @@ import DefaultError from "../errors/defaultError";
 import BlgContainer from "../utils/containers/BlgContainer";
 import FeedList from "./feed-list";
 import { ArticleDto } from "@/app/models/ArticleDto";
+import { ReactNode } from "react";
 
 const defaultLimit = 20;
 
-const FeedSection = async () =>{
+type Props = {
+    rightSideAction:ReactNode;
+}
+
+const FeedSection = async ({rightSideAction}:Props) =>{
     let data:ArticleDto[] = [];
 
     try {
@@ -28,10 +33,9 @@ const FeedSection = async () =>{
         <BlgContainer>
             <div className={styles["feed-container"]}>
                 <div className="flex items-center justify-between">
-                    <h1 className="h1-dark text-xl md:text-3xl">Your Gaming Feed</h1>
-                    <a className="text-lg md:text-xl underline" href="/feed">
-                        View All
-                    </a>
+                    <h1 className="h1-dark text-xl md:text-3xl">Your Gaming News Feed</h1>
+                    {rightSideAction}
+
                 </div>
                 <ErrorBoundary FallbackComponent={DefaultError}>
                     <FeedList initialArticles={data} take={defaultLimit} />            
