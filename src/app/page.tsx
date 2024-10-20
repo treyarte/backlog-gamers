@@ -12,11 +12,12 @@ export default async function Home() {
         <Hero />
         <PageContainer>
             <FeedSection 
+                showLoadMore={false}
                 rightSideAction={
                     <Link className="text-lg md:text-xl underline" href="/feed">
                         View All
                     </Link>
-                } 
+                }
             />
         </PageContainer>
     </>    	

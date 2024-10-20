@@ -21,6 +21,7 @@ export default async function FeedPage() {
     <DefaultLayout>
         <PageContainer>      
             <FeedSection 
+                showLoadMore={true}
                 rightSideAction={
                     <FeedSettingsButton sources={sources} />
                 } 

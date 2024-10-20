@@ -1,20 +1,21 @@
 import { getArticles } from "@/actions/articleActions";
-import { Article } from "@prisma/client";
+import { ArticleDto } from "@/app/models/ArticleDto";
+import { ReactNode } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import styles from "../../page.module.css";
 import DefaultError from "../errors/defaultError";
 import BlgContainer from "../utils/containers/BlgContainer";
-import FeedList from "./feed-list";
-import { ArticleDto } from "@/app/models/ArticleDto";
-import { ReactNode } from "react";
+import FeedItem from "./feed-item";
+import LoadMoreFeed from "./LoadMoreFeed";
 
-const defaultLimit = 20;
+const defaultLimit = 8;
 
 type Props = {
     rightSideAction:ReactNode;
+    showLoadMore?:boolean;
 }
 
-const FeedSection = async ({rightSideAction}:Props) =>{
+const FeedSection = async ({rightSideAction, showLoadMore}:Props) =>{
     let data:ArticleDto[] = [];
 
     try {
@@ -38,7 +39,21 @@ const FeedSection = async ({rightSideAction}:Props) =>{
 
                 </div>
                 <ErrorBoundary FallbackComponent={DefaultError}>
-                    <FeedList initialArticles={data} take={defaultLimit} />            
+                    <div className="flex flex-col xl:grid xl:grid-cols-2 gap-8">                            
+                        {data.map((article:ArticleDto) => (
+                            <FeedItem 
+                                key={article.id}
+                                article={article}
+                            />
+                        ))}
+                        {showLoadMore && (
+                            <LoadMoreFeed
+                                initialArticles={data}
+                                index={defaultLimit}
+                                pageSize={defaultLimit}
+                            />         
+                        ) }
+                    </div>                               
                 </ErrorBoundary>        
             </div>
         </BlgContainer>

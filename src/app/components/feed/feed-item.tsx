@@ -16,11 +16,15 @@ import Image from "next/image";
 
 
 type propsType = {
-    title:string
-    url:string
-    date:string
-    imgUrl:string
     article:ArticleDto
+}
+
+const getImage = (article:ArticleDto) => {
+    if(article.articleSite === articleSitesEnum.NintendoLife && article.imageUrl) {
+        return article.imageUrl.replace("small.jpg", "large.jpg")
+    }
+
+    return article.imageUrl ?? ""; //TODO add backlog gamers no image
 }
 
 export default function NewsItem(props:propsType) {
@@ -45,12 +49,13 @@ export default function NewsItem(props:propsType) {
                 <div className={styles["img-container"]}>
                     <a target="_blank" href={article.url}>
                         <Image                          
-                            src={`${article.imageUrl}`} 
+                            src={getImage(article)} 
                             alt="News Image" 
                             width={0} 
                             height={0} 
                             sizes='100vw'
-                            style={{ width: '100%', height: 'auto' }} 
+                            style={{ width: '100%', height: 'auto' }}
+                            className="min-w-[307px]"
                         />
                     </a>
                 </div>
