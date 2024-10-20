@@ -5,11 +5,12 @@ export class ArticlesRepo {
     public async getArticles(skip:number, take:number) {
         try {
             const articles = (await prisma.article.findMany({
+                orderBy: {
+                    articleDate: 'desc'
+                },
+                distinct: ['title'],
                 skip,
                 take,
-                orderBy: {
-                    updatedAt: 'desc'
-                },
                 select: {
                     id:true,
                     title:true,

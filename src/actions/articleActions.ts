@@ -1,3 +1,4 @@
+'use server';
 import { ActionResults } from "@/types";
 import { ArticlesRepo } from "./repos/articlesRepo";
 import { Article } from "@prisma/client";
@@ -14,6 +15,7 @@ export async function getArticles(skip:number, take:number) : Promise<ActionResu
 
         return {status: "success", data:articles};
     } catch (error) {
+        console.error(error);
         return {status: "error", error: "Something went wrong"};
     }
 }
