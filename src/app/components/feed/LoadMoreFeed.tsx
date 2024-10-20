@@ -38,6 +38,7 @@ export default function LoadMoreFeed({index, pageSize, initialArticles}:Props) {
 
     return (
         <>
+        {/*  */}
             {moreData.map(data => (
                 <FeedItem 
                     key={data.id}
