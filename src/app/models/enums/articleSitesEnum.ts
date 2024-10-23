@@ -13,6 +13,7 @@ export enum articleSitesEnum {
     Siliconera = 11,
     HardcoreGamer = 12,
     Game8co = 13,
+    DualShockers = 14,
 }
 
 export type articleSiteType = {
@@ -35,4 +36,5 @@ export const articleSitesDisplay = {
     [articleSitesEnum.Siliconera]: {name: "Siliconera", url: "https://www.siliconera.com"},
     [articleSitesEnum.HardcoreGamer]: {name: "Hardcore Gamer", url: "https://hardcoregamer.com"},
     [articleSitesEnum.Game8co]: {name: "Game8", url: "https://game8.co/articles"},
+    [articleSitesEnum.DualShockers]: {name: "DualShockers", url: "https://www.dualshockers.com"},
 }
