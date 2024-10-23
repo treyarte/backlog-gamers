@@ -55,7 +55,7 @@ export default function NewsItem(props:propsType) {
                             height={0} 
                             sizes='100vw'
                             style={{ width: '100%', height: 'auto' }}
-                            className="min-w-[307px]"
+                            // className="min-w-[307px]"
                         />
                     </a>
                 </div>

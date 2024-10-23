@@ -7,7 +7,7 @@ type Props = {
 
 export default function DefaultLayout({children}:Props) {
     return (
-        <div className='flex sm:justify-center min-h-[90vh] sm:pl-2 sm:pr-2 pl-7 pr-7 mt-content'>            
+        <div className='flex sm:justify-center min-h-[90vh] pl-2 pr-2 sm:pl-7 sm:pr-7 mt-content'>            
             {children}
         </div>    
     )

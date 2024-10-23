@@ -34,7 +34,8 @@ const FeedSection = async ({rightSideAction, showLoadMore}:Props) =>{
         <BlgContainer>
             <div className={styles["feed-container"]}>
                 <div className="flex items-center justify-between">
-                    <h1 className="h1-dark text-xl md:text-3xl">Your Gaming News Feed</h1>
+                    <h1 className="h1-dark text-xl md:text-3xl hidden sm:block">Your Gaming News Feed</h1>
+                    <h1 className="h1-dark text-xl md:text-3xl sm:hidden">Your Gaming Feed</h1>
                     {rightSideAction}
 
                 </div>
