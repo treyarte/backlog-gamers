@@ -8,17 +8,25 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
-  name          String?
-  email         String    @unique
-  passwordHash  String?
-  image         String?
-  emailVerified DateTime? @db.Date
-  createdAt     DateTime  @default(now()) @db.Date
-  updatedAt     DateTime  @updatedAt @db.Date
-  account       Account[]
-  comments      Comment[]
-  articleLikes  Like[]
+  id               String             @id @default(auto()) @map("_id") @db.ObjectId
+  name             String?
+  email            String             @unique
+  passwordHash     String?
+  image            String?
+  emailVerified    DateTime?          @db.Date
+  createdAt        DateTime           @default(now()) @db.Date
+  updatedAt        DateTime           @updatedAt @db.Date
+  account          Account[]
+  comments         Comment[]
+  articleLikes     Like[]
+  UserFeedSettings UserFeedSettings[]
+}
+
+model UserFeedSettings {
+  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  userId          String @db.ObjectId
+  user            User   @relation(fields: [userId], references: [id])
+  excludedSources Int[]
 }
 
 model Account {
