@@ -7,13 +7,16 @@ import { IoSettingsSharp } from "react-icons/io5";
 import SourceSettings from '../../feed/customize/SourceSettings';
 import {v4 as uuidV4} from "uuid";
 import { ArticleSource } from '@prisma/client';
+import { articleSitesEnum } from '@/app/models/enums/articleSitesEnum';
 
 type Props = {
     sources:ArticleSource[];
+    excludedSources:articleSitesEnum[];
 }
 
-export default function FeedSettingsButton({sources}:Props) {
+export default function FeedSettingsButton({sources, excludedSources}:Props) {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
+    
     return (
         <>
         <Button
@@ -26,6 +29,7 @@ export default function FeedSettingsButton({sources}:Props) {
                 Feed Settings
             </span>
         </Button>
+        {/* Move to its own component */}
         <Modal
             isOpen={isOpen}
             placement='bottom-center'
@@ -35,12 +39,12 @@ export default function FeedSettingsButton({sources}:Props) {
         <ModalContent>
           {(onClose) => (
             <>
-        <ModalHeader className="flex flex-col gap-1 text-xl">Feed Settings</ModalHeader>
+        <ModalHeader className="flex flex-col gap-1 text-xl">Feed Settings</ModalHeader> 
               <ModalBody>
                 <Tabs 
                     labels={["Sources", "Tags"]} 
                     tabContainers={[
-                        <SourceSettings key={uuidV4()} sources={sources}/>,
+                        <SourceSettings key={uuidV4()} sources={sources} excludedSources={excludedSources}/>,
                         <div key={"444"}>Tags</div>
 
                     ]}                                   
