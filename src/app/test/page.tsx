@@ -20,7 +20,8 @@ export default async function BtnFeedSettings() {
     return (
         <div className='flex sm:justify-center h-[90vh] sm:pl-2 sm:pr-2 pl-7 pr-7 mt-content'>
         <BlgContainer classes='w-full sm:w-auto'>
-            <FeedSettingsButton sources={sources} />
+            <div></div>
+            {/* <FeedSettingsButton sources={sources} /> */}
         </BlgContainer>
         </div>
     )
