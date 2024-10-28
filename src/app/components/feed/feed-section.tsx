@@ -1,4 +1,4 @@
-import { getArticles } from "@/actions/articleActions";
+import { getArticles, getUserArticles } from "@/actions/articleActions";
 import { ArticleDto } from "@/app/models/ArticleDto";
 import { ReactNode } from "react";
 import { ErrorBoundary } from "react-error-boundary";
@@ -19,7 +19,7 @@ const FeedSection = async ({rightSideAction, showLoadMore}:Props) =>{
     let data:ArticleDto[] = [];
 
     try {
-        const res = await getArticles(0, defaultLimit);
+        const res = await getUserArticles(0, defaultLimit);
         if(res.status === 'success') {
             data = res.data;
         }

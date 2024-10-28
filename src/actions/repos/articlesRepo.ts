@@ -31,6 +31,39 @@ export class ArticlesRepo {
         }
     }
 
+    //TODO refactor
+    public async getArticlesWithFilter(skip:number, take:number, excludedSite:number[]) {
+        try {
+            const articles = (await prisma.article.findMany({
+                where: {
+                    articleSite: {notIn: excludedSite}
+                },
+                orderBy: {
+                    articleDate: 'desc'
+                },
+                distinct: ['title'],
+                skip,
+                take,
+                select: {
+                    id:true,
+                    title:true,
+                    url:true,
+                    imageUrl:true,
+                    articleDate: true,
+                    articleSite: true,
+                    likes:true,
+                    shares:true,
+                    comments:true
+                }
+            }));
+
+            return articles;
+        } catch (error) {
+            console.error(error);        
+            throw error;
+        }
+    }
+
     public async getArticleBySlug(slug:string) {
         try {
             return prisma.article.findFirst({

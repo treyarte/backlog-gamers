@@ -2,7 +2,7 @@
 import { CircularProgress } from '@nextui-org/react';
 import {useInView} from 'react-intersection-observer';
 import React, { useEffect, useState } from 'react';
-import { getArticles } from '@/actions/articleActions';
+import { getArticles, getUserArticles } from '@/actions/articleActions';
 import { toast } from 'react-toastify';
 import { ArticleDto } from '@/app/models/ArticleDto';
 import FeedItem from './feed-item';
@@ -21,7 +21,7 @@ export default function LoadMoreFeed({index, pageSize, initialArticles}:Props) {
     useEffect(() => {
         async function onView() {
             
-            const res = await getArticles(pageIndex * pageSize, pageSize);
+            const res = await getUserArticles(pageIndex * pageSize, pageSize);
             if(res.status == 'error') {
                 throw new Error("Failed to get feed");                
             }

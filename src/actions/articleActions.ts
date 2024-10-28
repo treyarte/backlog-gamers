@@ -4,6 +4,8 @@ import { ArticlesRepo } from "./repos/articlesRepo";
 import { Article } from "@prisma/client";
 import { sanitizeInputInt, sanitizeInputSlug } from "@/libs/serverSanitizers";
 import { ArticleDto } from "@/app/models/ArticleDto";
+import { auth } from "@/auth";
+import { getUserExcludedSources } from "./repos/userFeedSettingsRepo";
 
 const articlesRepo = new ArticlesRepo();
 
@@ -14,6 +16,24 @@ export async function getArticles(skip:number, take:number) : Promise<ActionResu
         const articles = await articlesRepo.getArticles(skip, take);
 
         return {status: "success", data:articles};
+    } catch (error) {
+        console.error(error);
+        return {status: "error", error: "Something went wrong"};
+    }
+}
+
+export async function getUserArticles(skip:number, take:number) : Promise<ActionResults<ArticleDto[]>> {
+    try {
+        const session = await auth();
+
+        const userId = session?.user.id ?? "";
+
+        const excludedSources = await getUserExcludedSources(userId);
+        skip = sanitizeInputInt(skip);
+        take = sanitizeInputInt(take);
+        const articles = await articlesRepo.getArticlesWithFilter(skip, take, excludedSources);
+        return {status: "success", data:articles};
+
     } catch (error) {
         console.error(error);
         return {status: "error", error: "Something went wrong"};
