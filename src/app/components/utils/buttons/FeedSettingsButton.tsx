@@ -1,13 +1,12 @@
 "use client";
-
-import Tabs from '@/app/test/Tabs';
+import { articleSitesEnum } from '@/app/models/enums/articleSitesEnum';
 import { Button } from '@nextui-org/button';
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from '@nextui-org/react';
-import { IoSettingsSharp } from "react-icons/io5";
-import SourceSettings from '../../feed/customize/SourceSettings';
-import {v4 as uuidV4} from "uuid";
 import { ArticleSource } from '@prisma/client';
-import { articleSitesEnum } from '@/app/models/enums/articleSitesEnum';
+import { IoSettingsSharp } from "react-icons/io5";
+import { v4 as uuidV4 } from "uuid";
+import SourceSettings from '../../feed/customize/SourceSettings';
+
 
 type Props = {
     sources:ArticleSource[];
@@ -30,7 +29,7 @@ export default function FeedSettingsButton({sources, excludedSources}:Props) {
             </span>
         </Button>
         {/* Move to its own component */}
-        <Modal
+        <Modal            
             isOpen={isOpen}
             placement='bottom-center'
             onOpenChange={onOpenChange}
@@ -40,25 +39,27 @@ export default function FeedSettingsButton({sources, excludedSources}:Props) {
           {(onClose) => (
             <>
         <ModalHeader className="flex flex-col gap-1 text-xl">Feed Settings</ModalHeader> 
-              <ModalBody>
-                <Tabs 
+            <ModalBody>
+                <SourceSettings 
+                    key={uuidV4()} sources={sources} excludedSources={excludedSources}/>
+                    {/* <Tabs 
                     labels={["Sources", "Tags"]} 
                     tabContainers={[
                         <SourceSettings key={uuidV4()} sources={sources} excludedSources={excludedSources}/>,
                         <div key={"444"}>Tags</div>
 
                     ]}                                   
-                />
+                /> */}
               </ModalBody>
               <ModalFooter>
-                <Button 
+                {/* <Button 
                     color="primary" 
                     onPress={onClose}
                     className=" py-2 [&&]:bg-[#8e5bdb] [&&]:hover:bg-opacity-90 text-white text-xl
                     [&&]:disabled:bg-opacity-70 disabled:cursor-not-allowed"
                 >
                   save
-                </Button>
+                </Button> */}
             </ModalFooter>
             </>
             )}

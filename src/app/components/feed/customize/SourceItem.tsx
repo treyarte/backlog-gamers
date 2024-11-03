@@ -1,27 +1,42 @@
 'use client'
 import { AddExcludeSource, RemoveExcludeSource } from '@/actions/repos/userFeedSettingsRepo';
+import useScrollbarStore from '@/hooks/useScrollbarStore';
 import { Switch } from '@nextui-org/react';
 import { ArticleSource } from '@prisma/client';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { RefObject, useEffect, useRef, useState, useTransition } from 'react';
 
 type Props = {
+    containerRef:RefObject<HTMLDivElement>
     source:ArticleSource;
     isOn:boolean;
 }
 
-export default function SourceItem({source, isOn}:Props) {
+export default function SourceItem({containerRef, source, isOn}:Props) {
     const router = useRouter();
-    
+    const {scrollbarPos, updateScrollbarPos} = useScrollbarStore();
+    const [isToggled, setIsToggled] = useState(isOn);
+
+    useEffect(() => {
+        if(containerRef.current) {
+            containerRef.current.scrollTop = scrollbarPos;            
+        }
+    }, [containerRef, scrollbarPos])
+
     const handleSwitch = async (isSelected:boolean) => {
+        setIsToggled(isSelected);
         if(!isSelected) { //if the switch is turned off we update the exclusion list 
             await AddExcludeSource(source.articleSite);
         } else {
             await RemoveExcludeSource(source.articleSite);
         }
         
-        await router.refresh();        
+        if(containerRef.current) {
+            updateScrollbarPos(containerRef.current.scrollTop);            
+            await router.refresh();        
+        }
+
     }
 
     return (
@@ -40,8 +55,8 @@ export default function SourceItem({source, isOn}:Props) {
                 {source.title}
             </div>
             <div>
-            <Switch
-                defaultSelected={isOn}
+            <Switch                
+                defaultSelected={isToggled}
                 onValueChange={handleSwitch}
                 size="md"
                 color="success"

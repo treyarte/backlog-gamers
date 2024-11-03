@@ -1,9 +1,8 @@
-import React from 'react'
-import SourceItem from './SourceItem'
-import { ArticleSource } from '@prisma/client'
-import { getSources } from '@/actions/articleSourceActions';
-import { auth } from '@/auth';
+"use client";
 import { articleSitesEnum } from '@/app/models/enums/articleSitesEnum';
+import { ArticleSource } from '@prisma/client';
+import { useRef } from 'react';
+import SourceItem from './SourceItem';
 
 type Props = {
     sources:ArticleSource[];
@@ -11,11 +10,13 @@ type Props = {
 }
 
 export default  function SourceSettings({sources, excludedSources}: Props) {
+    const modalRef = useRef<HTMLDivElement>(null);
+    
     return (
-        <div className="flex flex-col gap-5 max-h-96 overflow-y-auto">
+        <div ref={modalRef} className="flex flex-col gap-5 max-h-96 overflow-y-auto">
             {
                 sources.map(source => (
-                    <SourceItem key={source.id} source={source} isOn={!excludedSources?.some(e => e === source.articleSite)}/>
+                    <SourceItem containerRef={modalRef} key={source.id} source={source} isOn={!excludedSources?.some(e => e === source.articleSite)}/>
 
                 ))
             }
