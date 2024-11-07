@@ -2,6 +2,7 @@
 import { articleSitesEnum } from "@/app/models/enums/articleSitesEnum";
 import { auth } from "@/auth";
 import { prisma } from "@/libs/prisma";
+import { isNullOrWhitespace } from "@/libs/stringHelpers";
 
 /**
  * Get a list of a user's excluded article sources
@@ -9,6 +10,9 @@ import { prisma } from "@/libs/prisma";
  * @returns 
  */
 export async function getUserExcludedSources(userId:string) : Promise<number[]> {
+    if(isNullOrWhitespace(userId)) {
+        return [];
+    }
     const res = await prisma.userFeedSettings.findUnique({
         where: {
             userId
@@ -65,6 +69,27 @@ export async function AddExcludeSource(excludedSource:articleSitesEnum) {
         create: {
             userId,
             excludedSources: [excludedSource]
+        }
+    })
+}
+
+/**
+ * Overwrites the existing users excluded sources
+ * with a new list
+ * @param excludedSource 
+ */
+export async function replaceExcludedSources(excludedSources:articleSitesEnum[]) {
+    const session = await auth();
+    const userId = session?.user.id ?? "";
+
+    await prisma.userFeedSettings.upsert({
+        where: {userId},
+        update: {
+            excludedSources
+        },
+        create: {
+            userId,
+            excludedSources
         }
     })
 }

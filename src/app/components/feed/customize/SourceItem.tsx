@@ -1,22 +1,28 @@
 'use client'
 import { AddExcludeSource, RemoveExcludeSource } from '@/actions/repos/userFeedSettingsRepo';
+import { FeedSettingsContext } from '@/app/context/feedSettingsContext';
 import useScrollbarStore from '@/hooks/useScrollbarStore';
 import { Switch } from '@nextui-org/react';
 import { ArticleSource } from '@prisma/client';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { RefObject, useEffect, useRef, useState, useTransition } from 'react';
+import { RefObject, useContext, useEffect, useRef, useState, useTransition } from 'react';
+import { Controller, useFieldArray, useFormContext } from 'react-hook-form';
 
 type Props = {
     containerRef:RefObject<HTMLDivElement>
     source:ArticleSource;
     isOn:boolean;
+    index:number;
 }
 
-export default function SourceItem({containerRef, source, isOn}:Props) {
+export default function SourceItem({containerRef, source, isOn, index}:Props) {
+    
     const router = useRouter();
     const {scrollbarPos, updateScrollbarPos} = useScrollbarStore();
     const [isToggled, setIsToggled] = useState(isOn);
+
+    const {excludedSites, updateExcludedSites} = useContext(FeedSettingsContext);
 
     useEffect(() => {
         if(containerRef.current) {
@@ -26,15 +32,21 @@ export default function SourceItem({containerRef, source, isOn}:Props) {
 
     const handleSwitch = async (isSelected:boolean) => {
         setIsToggled(isSelected);
-        if(!isSelected) { //if the switch is turned off we update the exclusion list 
-            await AddExcludeSource(source.articleSite);
-        } else {
-            await RemoveExcludeSource(source.articleSite);
+        if(!isSelected) { //if the switch is turned off we update the exclusion list             
+            // append(source.articleSite);
+            const sites = [...new Set([...excludedSites, source.articleSite])]
+            updateExcludedSites(sites);
+            // await AddExcludeSource(source.articleSite);
+        } else {         
+            const filteredSites = [...new Set([...excludedSites.filter(e => e !== source.articleSite)])];
+            updateExcludedSites(filteredSites);
+            // remove(index)
+            // await RemoveExcludeSource(source.articleSite);
         }
         
         if(containerRef.current) {
-            updateScrollbarPos(containerRef.current.scrollTop);            
-            await router.refresh();        
+            // updateScrollbarPos(containerRef.current.scrollTop);            
+            // await router.refresh();        
         }
 
     }
@@ -57,9 +69,9 @@ export default function SourceItem({containerRef, source, isOn}:Props) {
             <div>
             <Switch                
                 defaultSelected={isToggled}
-                onValueChange={handleSwitch}
+                onValueChange={handleSwitch}                
                 size="md"
-                color="success"
+                color="success"                
             >
                 </Switch>
             </div>

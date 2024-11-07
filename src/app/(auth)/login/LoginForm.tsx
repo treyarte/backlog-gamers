@@ -18,8 +18,9 @@ export default function LoginForm() {
     const router = useRouter();
     const {handleSubmit, register, formState: {errors, isValid, isSubmitting}, setError, getValues} = useForm<LoginSchema>({
         resolver: zodResolver(loginSchema),
-        mode:'onTouched'
+        mode:'onTouched',
     });
+
 
     /**
      * Submit user credentials to our auth actions to check if a user is authenticated

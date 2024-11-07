@@ -6,6 +6,13 @@ import { ArticleSource } from '@prisma/client';
 import { IoSettingsSharp } from "react-icons/io5";
 import { v4 as uuidV4 } from "uuid";
 import SourceSettings from '../../feed/customize/SourceSettings';
+import { FeedSettingsSchema, feedSettingsSchema } from '@/app/schemas/feedSettingsSchema';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
+import { FeedSettingsContext } from '@/app/context/feedSettingsContext';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { replaceExcludedSources } from '@/actions/repos/userFeedSettingsRepo';
 
 
 type Props = {
@@ -15,7 +22,22 @@ type Props = {
 
 export default function FeedSettingsButton({sources, excludedSources}:Props) {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
-    
+    const [exSites, setExSites] = useState(excludedSources);
+    const router = useRouter();
+
+    const updateExcludedSites = (sites:articleSitesEnum[]) => {
+        setExSites(sites);
+    }
+
+    /**
+     * updates the user's feed settings
+     * and refreshes the page
+     */
+    const handleSubmit = async () => {
+        await replaceExcludedSources(exSites);
+        router.refresh();
+    }   
+
     return (
         <>
         <Button
@@ -40,8 +62,20 @@ export default function FeedSettingsButton({sources, excludedSources}:Props) {
             <>
         <ModalHeader className="flex flex-col gap-1 text-xl">Feed Settings</ModalHeader> 
             <ModalBody>
-                <SourceSettings 
-                    key={uuidV4()} sources={sources} excludedSources={excludedSources}/>
+            <div className="flex flex-col gap-5 max-h-96 overflow-y-auto">
+                <FeedSettingsContext.Provider
+                    value={{
+                        excludedSites:exSites,
+                        updateExcludedSites:updateExcludedSites
+                    }}
+                >
+                    <SourceSettings 
+                        key={uuidV4()} 
+                        sources={sources} 
+                        excludedSources={exSites}
+                    />
+                </FeedSettingsContext.Provider>
+                </div>
                     {/* <Tabs 
                     labels={["Sources", "Tags"]} 
                     tabContainers={[
@@ -52,14 +86,14 @@ export default function FeedSettingsButton({sources, excludedSources}:Props) {
                 /> */}
               </ModalBody>
               <ModalFooter>
-                {/* <Button 
+                <Button 
                     color="primary" 
-                    onPress={onClose}
+                    onPress={handleSubmit}
                     className=" py-2 [&&]:bg-[#8e5bdb] [&&]:hover:bg-opacity-90 text-white text-xl
                     [&&]:disabled:bg-opacity-70 disabled:cursor-not-allowed"
                 >
                   save
-                </Button> */}
+                </Button>
             </ModalFooter>
             </>
             )}

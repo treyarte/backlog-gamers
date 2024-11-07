@@ -1,8 +1,12 @@
 "use client";
 import { articleSitesEnum } from '@/app/models/enums/articleSitesEnum';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { ArticleSource } from '@prisma/client';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import SourceItem from './SourceItem';
+import { useForm } from 'react-hook-form';
+import { FeedSettingsSchema, feedSettingsSchema } from '@/app/schemas/feedSettingsSchema';
+import { useRouter } from 'next/navigation';
 
 type Props = {
     sources:ArticleSource[];
@@ -11,15 +15,29 @@ type Props = {
 
 export default  function SourceSettings({sources, excludedSources}: Props) {
     const modalRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
+
+    const [excludedList, setExcludedList] = useState(excludedSources);
+
+    const updateExcludedList =  (excludedList:articleSitesEnum[]) => {
+        setExcludedList(excludedList);
+        router.refresh();
+    }
     
     return (
-        <div ref={modalRef} className="flex flex-col gap-5 max-h-96 overflow-y-auto">
+        <>
             {
-                sources.map(source => (
-                    <SourceItem containerRef={modalRef} key={source.id} source={source} isOn={!excludedSources?.some(e => e === source.articleSite)}/>
+                sources.map((source, index) => (
+                    <SourceItem 
+                        containerRef={modalRef} 
+                        key={source.id} 
+                        source={source} 
+                        isOn={!excludedSources?.some(e => e === source.articleSite)}
+                        index={index}    
+                    />
 
                 ))
             }
-        </div>
+        </>
     )
 }

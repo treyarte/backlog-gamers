@@ -13,14 +13,14 @@ export default auth((req) => {
 
     const isPublic = publicRoutes.includes(nextUrl.pathname);
     const isAuthRoute = authRoutes.includes(nextUrl.pathname);
-
-    if(isPublic) {        
+    
+    if(isPublic) {   
         return NextResponse.next();
     }
     
-    if(publicRoutes.some(r => nextUrl.pathname.includes(r))) {
-        return NextResponse.next();
-    }
+    // if(publicRoutes.some(r => nextUrl.pathname.includes(r))) {         
+    //     return NextResponse.next();
+    // }
 
     if(isAuthRoute) {
         if(isLoggedIn) {
