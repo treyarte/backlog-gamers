@@ -1,13 +1,17 @@
 "use client";
-
-import Tabs from '@/app/test/Tabs';
+import { replaceExcludedSources } from '@/actions/repos/userFeedSettingsRepo';
+import { FeedSettingsContext } from '@/app/context/feedSettingsContext';
+import { articleSitesEnum } from '@/app/models/enums/articleSitesEnum';
 import { Button } from '@nextui-org/button';
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from '@nextui-org/react';
-import { IoSettingsSharp } from "react-icons/io5";
-import SourceSettings from '../../feed/customize/SourceSettings';
-import {v4 as uuidV4} from "uuid";
 import { ArticleSource } from '@prisma/client';
-import { articleSitesEnum } from '@/app/models/enums/articleSitesEnum';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { IoSettingsSharp } from "react-icons/io5";
+import { v4 as uuidV4 } from "uuid";
+import SourceSettings from '../../feed/customize/SourceSettings';
+import { useSession } from 'next-auth/react';
+
 
 type Props = {
     sources:ArticleSource[];
@@ -16,7 +20,34 @@ type Props = {
 
 export default function FeedSettingsButton({sources, excludedSources}:Props) {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
-    
+    const [exSites, setExSites] = useState(excludedSources);
+    const {data, status} = useSession();
+    const router = useRouter();
+
+    const updateExcludedSites = (sites:articleSitesEnum[]) => {
+        setExSites(sites);
+    }
+
+    useEffect(() => {
+        if(status === "unauthenticated") {
+            const excludedSources = JSON.parse(localStorage.getItem("excludedSources") ?? "[]");
+            setExSites(excludedSources);
+        }
+    }, [status]);
+
+    /**
+     * updates the user's feed settings
+     * and refreshes the page
+     */
+    const handleSubmit = async () => {
+        if(status === "authenticated") {
+            await replaceExcludedSources(exSites);
+        } else {                                
+                localStorage.setItem("excludedSources", JSON.stringify(exSites));                                        
+        }
+        router.refresh();
+    }   
+
     return (
         <>
         <Button
@@ -30,7 +61,7 @@ export default function FeedSettingsButton({sources, excludedSources}:Props) {
             </span>
         </Button>
         {/* Move to its own component */}
-        <Modal
+        <Modal            
             isOpen={isOpen}
             placement='bottom-center'
             onOpenChange={onOpenChange}
@@ -40,20 +71,34 @@ export default function FeedSettingsButton({sources, excludedSources}:Props) {
           {(onClose) => (
             <>
         <ModalHeader className="flex flex-col gap-1 text-xl">Feed Settings</ModalHeader> 
-              <ModalBody>
-                <Tabs 
+            <ModalBody>
+            <div className="flex flex-col gap-5 max-h-96 overflow-y-auto">
+                <FeedSettingsContext.Provider
+                    value={{
+                        excludedSites:exSites,
+                        updateExcludedSites:updateExcludedSites
+                    }}
+                >
+                    <SourceSettings 
+                        key={uuidV4()} 
+                        sources={sources} 
+                        excludedSources={exSites}
+                    />
+                </FeedSettingsContext.Provider>
+                </div>
+                    {/* <Tabs 
                     labels={["Sources", "Tags"]} 
                     tabContainers={[
                         <SourceSettings key={uuidV4()} sources={sources} excludedSources={excludedSources}/>,
                         <div key={"444"}>Tags</div>
 
                     ]}                                   
-                />
+                /> */}
               </ModalBody>
               <ModalFooter>
                 <Button 
                     color="primary" 
-                    onPress={onClose}
+                    onPress={handleSubmit}
                     className=" py-2 [&&]:bg-[#8e5bdb] [&&]:hover:bg-opacity-90 text-white text-xl
                     [&&]:disabled:bg-opacity-70 disabled:cursor-not-allowed"
                 >

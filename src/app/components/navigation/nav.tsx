@@ -29,18 +29,18 @@ export default function Nav({session}:Props) {
                      backdrop-filter backdrop-blur-lg bg-opacity-30 transition-opacity`}
         >
             <Link className="flex gap-2 text-xl 2xl:text-3xl items-center" href='/'>
-                <div className="w-11 xl:w-16">
+                <div className="w-11 xl:w-[80%]">
                     <Image
                         width={0}
                         height={0}
                         className="w-11 xl:w-16"
                         sizes='100vw'
                         style={{ width: '100%', height: 'auto' }}
-                        src='/images/logos/bg-logo-invert.png'
+                        src='/images/logos/feed-3.png'
                         alt='logo'
                     />
                 </div>
-                Backlog Gamers
+                {/* Backlog Gamers */}
             </Link>
           <ul className='hidden md:flex text-base lg:text-xl gap-5 2xl:gap-10'>
             <li>

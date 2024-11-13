@@ -22,6 +22,7 @@ export default async function FeedPage() {
             sources = res.data;            
         }
     } catch (error) {
+        console.error(error);
         throw new Error("Failed to find sources");
     }
     return (
