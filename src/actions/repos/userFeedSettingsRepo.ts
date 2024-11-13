@@ -82,6 +82,10 @@ export async function replaceExcludedSources(excludedSources:articleSitesEnum[])
     const session = await auth();
     const userId = session?.user.id ?? "";
 
+    if(isNullOrWhitespace(userId)) {
+        return;
+    }
+
     await prisma.userFeedSettings.upsert({
         where: {userId},
         update: {

@@ -1,18 +1,16 @@
 "use client";
+import { replaceExcludedSources } from '@/actions/repos/userFeedSettingsRepo';
+import { FeedSettingsContext } from '@/app/context/feedSettingsContext';
 import { articleSitesEnum } from '@/app/models/enums/articleSitesEnum';
 import { Button } from '@nextui-org/button';
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from '@nextui-org/react';
 import { ArticleSource } from '@prisma/client';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { IoSettingsSharp } from "react-icons/io5";
 import { v4 as uuidV4 } from "uuid";
 import SourceSettings from '../../feed/customize/SourceSettings';
-import { FeedSettingsSchema, feedSettingsSchema } from '@/app/schemas/feedSettingsSchema';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
-import { FeedSettingsContext } from '@/app/context/feedSettingsContext';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { replaceExcludedSources } from '@/actions/repos/userFeedSettingsRepo';
+import { useSession } from 'next-auth/react';
 
 
 type Props = {
@@ -23,18 +21,30 @@ type Props = {
 export default function FeedSettingsButton({sources, excludedSources}:Props) {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const [exSites, setExSites] = useState(excludedSources);
+    const {data, status} = useSession();
     const router = useRouter();
 
     const updateExcludedSites = (sites:articleSitesEnum[]) => {
         setExSites(sites);
     }
 
+    useEffect(() => {
+        if(status === "unauthenticated") {
+            const excludedSources = JSON.parse(localStorage.getItem("excludedSources") ?? "[]");
+            setExSites(excludedSources);
+        }
+    }, [status]);
+
     /**
      * updates the user's feed settings
      * and refreshes the page
      */
     const handleSubmit = async () => {
-        await replaceExcludedSources(exSites);
+        if(status === "authenticated") {
+            await replaceExcludedSources(exSites);
+        } else {                                
+                localStorage.setItem("excludedSources", JSON.stringify(exSites));                                        
+        }
         router.refresh();
     }   
 

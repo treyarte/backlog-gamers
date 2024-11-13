@@ -14,16 +14,8 @@ type Props = {
 }
 
 export default  function SourceSettings({sources, excludedSources}: Props) {
-    const modalRef = useRef<HTMLDivElement>(null);
-    const router = useRouter();
+    const modalRef = useRef<HTMLDivElement>(null);    
 
-    const [excludedList, setExcludedList] = useState(excludedSources);
-
-    const updateExcludedList =  (excludedList:articleSitesEnum[]) => {
-        setExcludedList(excludedList);
-        router.refresh();
-    }
-    
     return (
         <>
             {
