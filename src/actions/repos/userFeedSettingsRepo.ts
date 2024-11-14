@@ -3,6 +3,7 @@ import { articleSitesEnum } from "@/app/models/enums/articleSitesEnum";
 import { auth } from "@/auth";
 import { prisma } from "@/libs/prisma";
 import { isNullOrWhitespace } from "@/libs/stringHelpers";
+import { cookies } from "next/headers";
 
 /**
  * Get a list of a user's excluded article sources
@@ -83,6 +84,9 @@ export async function replaceExcludedSources(excludedSources:articleSitesEnum[])
     const userId = session?.user.id ?? "";
 
     if(isNullOrWhitespace(userId)) {
+        const cookieStore = await cookies();
+
+        cookieStore.set("name", JSON.stringify(excludedSources), {secure: true, httpOnly: true})
         return;
     }
 

@@ -1,4 +1,4 @@
-import { getArticles, getUserArticles } from "@/actions/articleActions";
+import { getUserArticles } from "@/actions/articleActions";
 import { ArticleDto } from "@/app/models/ArticleDto";
 import { ReactNode } from "react";
 import { ErrorBoundary } from "react-error-boundary";
@@ -7,19 +7,21 @@ import DefaultError from "../errors/defaultError";
 import BlgContainer from "../utils/containers/BlgContainer";
 import FeedItem from "./feed-item";
 import LoadMoreFeed from "./LoadMoreFeed";
+import { articleSitesEnum } from "@/app/models/enums/articleSitesEnum";
 
 const defaultLimit = 8;
 
 type Props = {
+    excludedSources:articleSitesEnum[];
     rightSideAction:ReactNode;
     showLoadMore?:boolean;
 }
 
-const FeedSection = async ({rightSideAction, showLoadMore}:Props) =>{
+const FeedSection = async ({excludedSources, rightSideAction, showLoadMore}:Props) =>{
     let data:ArticleDto[] = [];
 
     try {
-        const res = await getUserArticles(0, defaultLimit);
+        const res = await getUserArticles(0, defaultLimit, excludedSources);
         if(res.status === 'success') {
             data = res.data;
         }
