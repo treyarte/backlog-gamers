@@ -36,7 +36,7 @@ export default function Nav({session}:Props) {
                         className="w-11 xl:w-16"
                         sizes='100vw'
                         style={{ width: '100%', height: 'auto' }}
-                        src='/images/logos/feed-3.png'
+                        src='/images/logos/logo-white.png'
                         alt='logo'
                     />
                 </div>

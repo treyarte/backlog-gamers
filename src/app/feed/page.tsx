@@ -28,7 +28,8 @@ export default async function FeedPage() {
     return (
     <DefaultLayout>
         <PageContainer>      
-            <FeedSection 
+            <FeedSection
+                excludedSources={excludedList}
                 showLoadMore={true}
                 rightSideAction={
                     <FeedSettingsButton sources={sources} excludedSources={excludedList} />

@@ -6,6 +6,7 @@ import { sanitizeInputInt, sanitizeInputSlug } from "@/libs/serverSanitizers";
 import { ArticleDto } from "@/app/models/ArticleDto";
 import { auth } from "@/auth";
 import { getUserExcludedSources } from "./repos/userFeedSettingsRepo";
+import { articleSitesEnum } from "@/app/models/enums/articleSitesEnum";
 
 const articlesRepo = new ArticlesRepo();
 
@@ -22,13 +23,8 @@ export async function getArticles(skip:number, take:number) : Promise<ActionResu
     }
 }
 
-export async function getUserArticles(skip:number, take:number) : Promise<ActionResults<ArticleDto[]>> {
+export async function getUserArticles(skip:number, take:number, excludedSources:articleSitesEnum[]) : Promise<ActionResults<ArticleDto[]>> {
     try {
-        const session = await auth();
-
-        const userId = session?.user.id ?? "";
-
-        const excludedSources = await getUserExcludedSources(userId);
         skip = sanitizeInputInt(skip);
         take = sanitizeInputInt(take);
         const articles = await articlesRepo.getArticlesWithFilter(skip, take, excludedSources);

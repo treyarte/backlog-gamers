@@ -40,11 +40,12 @@ export default function FeedSettingsButton({sources, excludedSources}:Props) {
      * and refreshes the page
      */
     const handleSubmit = async () => {
-        if(status === "authenticated") {
-            await replaceExcludedSources(exSites);
-        } else {                                
-                localStorage.setItem("excludedSources", JSON.stringify(exSites));                                        
-        }
+        await replaceExcludedSources(exSites);
+        // if(status === "authenticated") {
+        //     await replaceExcludedSources(exSites);
+        // } else {                                
+        //         localStorage.setItem("excludedSources", JSON.stringify(exSites));                                        
+        // }
         router.refresh();
     }   
 
