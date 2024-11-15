@@ -4,7 +4,7 @@ import { stagger, useAnimate } from "framer-motion"
 import AnimatedBtn from "../components/utils/buttons/animated/examples/AnimatedBtn"
 import LikeButton from "../components/utils/buttons/LikeButton"
 
-export const metadata:Metadata = {
+ const metadata:Metadata = {
     title: "Terms Of Service",
     description: "HELLO"
 }

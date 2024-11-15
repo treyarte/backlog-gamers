@@ -1,17 +1,26 @@
-import { getArticleBySlug } from '@/actions/articleActions'
+import { getArticleBySlug } from '@/actions/articleActions';
 import BlgContainer from '@/app/components/utils/containers/BlgContainer';
 import PageNoSidebarContainer from '@/app/components/utils/containers/PageNoSidebarContainer';
-import { notFound, useRouter } from 'next/navigation'
-import React from 'react'
+import { notFound } from 'next/navigation';
 
-export default async function FeedSlugPage ({params}: {params: {slug:string}}) {
-    const res = await getArticleBySlug(params.slug);
+type Params = Promise<{slug:string}>
+
+type Props = {
+    ss:string;
+}
+
+export default async function ArticlePage({
+    params,
+}: {params: Promise<{slug:string}>}) {
+    const {slug} = await params;
+    const res = await getArticleBySlug(slug);
 
     if(res.status === "error" || !res.data) return notFound();
 
     return (
         <PageNoSidebarContainer>
-            <BlgContainer classes='max-w-2xl'>                
+            <BlgContainer classes='max-w-2xl'>           
+                <div></div>     
                 <h1>
                     {res.data.title}
                 </h1>

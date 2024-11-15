@@ -23,7 +23,7 @@ export async function getArticles(skip:number, take:number) : Promise<ActionResu
     }
 }
 
-export async function getUserArticles(skip:number, take:number, excludedSources:articleSitesEnum[]) : Promise<ActionResults<ArticleDto[]>> {
+export async function getUserArticles(skip:number, take:number, excludedSources:articleSitesEnum[] = []) : Promise<ActionResults<ArticleDto[]>> {
     try {
         skip = sanitizeInputInt(skip);
         take = sanitizeInputInt(take);

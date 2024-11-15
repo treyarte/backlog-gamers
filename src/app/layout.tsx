@@ -16,7 +16,7 @@ const roboto = Roboto({
   subsets: ['latin'],
 })
 
-export const metadata: Metadata = {
+ const metadata: Metadata = {
   title: {
     template: `Backlog Gamers | %s`,
     default: 'Backlog Gamers'
