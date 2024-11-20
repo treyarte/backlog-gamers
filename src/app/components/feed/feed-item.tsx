@@ -13,6 +13,8 @@ import LikeButton from "../utils/buttons/LikeButton";
 import { getAuthUserId } from "@/actions/authActions";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { useState } from "react";
+import LoginModal from "../modals/LoginModal";
 
 
 type propsType = {
@@ -27,13 +29,15 @@ const getImage = (article:ArticleDto) => {
     return article.imageUrl ?? ""; //TODO add backlog gamers no image
 }
 
-export default function NewsItem(props:propsType) {
+export default function FeedItem(props:propsType) {
     const {
         article
     } = props;
 
     const userId = useSession();
     
+    const {isLoginOpen, setIsLoginOpen} = useState(false);
+
     const displaySiteName = ():articleSiteType => {
         const siteEnum:articleSitesEnum = parseInt(`${article.articleSite}`);
         if(isNaN(siteEnum) || articleSitesEnum[siteEnum] == null){
@@ -44,6 +48,7 @@ export default function NewsItem(props:propsType) {
     }
 
     return (
+        <>
         <article className={`${styles["feed-item"]} ${styles["feed-item-dark"]}`}>
             <div className={styles["feed-left"]}>
                 <div className={styles["img-container"]}>
@@ -114,5 +119,7 @@ export default function NewsItem(props:propsType) {
                 </div>
             </div>
         </article>
+        <LoginModal isOpenDefault={isLoginOpen}/>
+        </>
     )
 }

@@ -5,7 +5,7 @@ import LoginForm from './LoginForm';
 
 export default function Loginpage() {
   return (
-    <div className='flex sm:justify-center h-[90vh] sm:pl-2 sm:pr-2 pl-7 pr-7 mt-content'>
+    <div className='flex sm:justify-center h-[90vh] sm:pl-2 sm:pr-2  mt-content'>
         <BlgContainer classes='w-full sm:w-auto'>
             <FormLogo />
             <div className='flex flex-row gap-2 justify-center mb-4'>            

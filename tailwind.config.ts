@@ -4,9 +4,9 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   mode: 'jit',
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",    
+    "./src/pages/**/*.tsx",
+    "./src/components/**/*.tsx",
+    "./src/app/**/*.tsx",    
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
@@ -32,7 +32,7 @@ const config: Config = {
         'default': '#B4B4B8'
       },
       textColor: {
-        'default': '#519fe9'
+        'default': '#519fe9',        
       },      
       backgroundColor: {
         'default': '#3F97E9',   

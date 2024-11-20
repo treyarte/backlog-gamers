@@ -28,19 +28,19 @@ export default function Nav({session}:Props) {
                      justify-between px-3 md:px-12 2xl:px-28 bg-zinc-800 
                      backdrop-filter backdrop-blur-lg bg-opacity-30 transition-opacity`}
         >
-            <Link className="flex gap-2 text-xl 2xl:text-3xl items-center" href='/'>
-                <div className="w-11 xl:w-[80%]">
+            <Link className="flex gap-2 text-3xl xl:text-4xl 2xl:text-5xl items-center relative ml-6 sm:ml-0" href='/'>
+                <div className="top-[-6px] left-[-26px] xl:top-[-9px] xl:left-[-33px] 2xl:top-[-12px] 2xl:left-[-43px] absolute w-1/5">
                     <Image
                         width={0}
                         height={0}
                         className="w-11 xl:w-16"
                         sizes='100vw'
                         style={{ width: '100%', height: 'auto' }}
-                        src='/images/logos/logo-white.png'
+                        src='/images/logos/feed-icon.png'
                         alt='logo'
                     />
                 </div>
-                {/* Backlog Gamers */}
+                Feed It Games
             </Link>
           <ul className='hidden md:flex text-base lg:text-xl gap-5 2xl:gap-10'>
             <li>
