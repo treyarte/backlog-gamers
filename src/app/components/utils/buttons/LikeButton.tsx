@@ -124,18 +124,19 @@ export default function LikeButton({articleId, hasLiked}:Props) {
         <Modal
             isOpen={isOpen}
             onOpenChange={onOpenChange}
+            placement="center"
             >
                 <ModalContent>
-                <ModalBody>
-                <BlgContainer classes=''>
-            <FormLogo />
-            <div className='flex flex-row gap-2 justify-center mb-4'>            
-                <FiLogIn size={38} />
-                <h1 className='font-bold text-4xl'>Login</h1>
-            </div>
-            <LoginForm />
-        </BlgContainer>
-        </ModalBody>
+                    <ModalBody>
+                    <BlgContainer classes=''>
+                <FormLogo />
+                <div className='flex flex-row gap-2 justify-center mb-4'>            
+                    <FiLogIn size={38} />
+                    <h1 className='font-bold text-4xl'>Login</h1>
+                </div>
+                <LoginForm />
+            </BlgContainer>
+            </ModalBody>
                 </ModalContent>
         </Modal>
         </div>
