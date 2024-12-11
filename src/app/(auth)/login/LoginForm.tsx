@@ -66,6 +66,14 @@ export default function LoginForm() {
                 isDisabled={!isValid} 
             />
         </div>
+        <div className='flex justify-between'>
+            <div>
+                <a className='underline' href="#">Forgot Password?</a>
+            </div>
+            <div>
+                <a className='underline' href="/register">Sign Up</a>
+            </div>
+        </div>
         <HorizontalText text='More ways to login'/>
         <SocialLogin />
     </form>

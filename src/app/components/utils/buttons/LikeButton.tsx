@@ -1,11 +1,17 @@
 'use client';
 
 import { toggleLikeArticle } from "@/actions/repos/likesRepo";
+import LoginForm from "@/app/(auth)/login/LoginForm";
 import { getRandomNumber } from "@/app/utils/mathHelpers";
+import { Modal, ModalBody, ModalContent, useDisclosure } from "@nextui-org/react";
 import { useAnimate, AnimationSequence, stagger } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { FiLogIn } from "react-icons/fi";
 import { toast } from "react-toastify";
+import BlgContainer from "../containers/BlgContainer";
+import FormLogo from "../containers/FormLogo";
+import { useSession } from "next-auth/react";
 
 
 type Props = {
@@ -19,6 +25,10 @@ export default function LikeButton({articleId, hasLiked}:Props) {
     const router = useRouter();
 
     const [scope, animate] = useAnimate();
+
+    const {isOpen, onOpen, onOpenChange} = useDisclosure();
+
+    const {status} = useSession();
 
     const handleClick = async () => {
         const sparkles = Array.from({length:sparklesAmount});
@@ -60,6 +70,10 @@ export default function LikeButton({articleId, hasLiked}:Props) {
         ]);
         try {
             
+            if(status === "unauthenticated") {
+                onOpen();
+                return;
+            }
 
             if(hasLiked) {
                 await toggleLike();
@@ -80,6 +94,7 @@ export default function LikeButton({articleId, hasLiked}:Props) {
             //Pop open login modal
             //@ts-ignore
             if(error?.message === "Unauthorized") {
+                
                 toast.info("Please login to like an article");
             }
         }
@@ -106,6 +121,24 @@ export default function LikeButton({articleId, hasLiked}:Props) {
                 ))}
             </span>
         </button>
+        <Modal
+            isOpen={isOpen}
+            onOpenChange={onOpenChange}
+            placement="center"
+            >
+                <ModalContent>
+                    <ModalBody>
+                    <BlgContainer classes=''>
+                <FormLogo />
+                <div className='flex flex-row gap-2 justify-center mb-4'>            
+                    <FiLogIn size={38} />
+                    <h1 className='font-bold text-4xl'>Login</h1>
+                </div>
+                <LoginForm />
+            </BlgContainer>
+            </ModalBody>
+                </ModalContent>
+        </Modal>
         </div>
     )
 }

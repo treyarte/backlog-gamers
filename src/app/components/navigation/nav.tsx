@@ -7,6 +7,7 @@ import HamburgerBtn from "../utils/hamburger-btn";
 import NavMobile from "./nav-mobile";
 import styles from "./nav.module.css";
 import SignOutBtn from "./SignOutBtn";
+import stylesCopy from './nav-copy.module.css'
 
 type Props = {
     session:Session|null
@@ -28,20 +29,18 @@ export default function Nav({session}:Props) {
                      justify-between px-3 md:px-12 2xl:px-28 bg-zinc-800 
                      backdrop-filter backdrop-blur-lg bg-opacity-30 transition-opacity`}
         >
-            <Link className="flex gap-2 text-xl 2xl:text-3xl items-center" href='/'>
-                <div className="w-11 xl:w-[80%]">
-                    <Image
+            <div className={stylesCopy.navLogo}>
+                <Link href='/'>
+                    <Image 
                         width={0}
                         height={0}
-                        className="w-11 xl:w-16"
                         sizes='100vw'
-                        style={{ width: '100%', height: 'auto' }}
-                        src='/images/logos/logo-white.png'
-                        alt='logo'
+                        style={{width: '100%', height: 'auto'}}
+                        src={'/images/logos/logo.png'}
+                        alt='Logo'
                     />
-                </div>
-                {/* Backlog Gamers */}
-            </Link>
+                </Link>
+            </div>
           <ul className='hidden md:flex text-base lg:text-xl gap-5 2xl:gap-10'>
             <li>
               <Link href='/feed'>
@@ -49,7 +48,7 @@ export default function Nav({session}:Props) {
                 <span className='desktop-display'>News Feed</span>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link href='#experience'>
                 <span className='mobile-display'>Upcoming</span>
                 <span className='desktop-display'>Upcoming Games</span>
@@ -69,7 +68,7 @@ export default function Nav({session}:Props) {
                 <span className='mobile-display'>Trending</span>
                 <span className='desktop-display'>Trending Games</span>
               </Link>
-            </li>
+            </li> */}
           </ul>
           <div className="hidden text-base lg:text-xl md:flex gap-5 2xl:gap-10">
             {session ? (

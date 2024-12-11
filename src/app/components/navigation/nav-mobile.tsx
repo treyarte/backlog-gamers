@@ -36,7 +36,7 @@ export default function NavMobile(props:MobileNavProps) {
                     News Feed
                 </a>
             </li>
-            <li>
+            {/* <li>
                 <a 
                     onClick={toggleMobileMenu} 
                     href="#experience"
@@ -67,7 +67,7 @@ export default function NavMobile(props:MobileNavProps) {
                 >
                     Trending Games
                 </a>
-            </li>
+            </li> */}
             <li>
                 <Link
                     onClick={toggleMobileMenu} 

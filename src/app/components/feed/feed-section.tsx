@@ -8,6 +8,8 @@ import BlgContainer from "../utils/containers/BlgContainer";
 import FeedItem from "./feed-item";
 import LoadMoreFeed from "./LoadMoreFeed";
 import { articleSitesEnum } from "@/app/models/enums/articleSitesEnum";
+import { Modal, useDisclosure } from "@nextui-org/react";
+import LoginForm from "@/app/(auth)/login/LoginForm";
 
 const defaultLimit = 8;
 
@@ -18,7 +20,7 @@ type Props = {
 }
 
 const FeedSection = async ({excludedSources, rightSideAction, showLoadMore}:Props) =>{
-    let data:ArticleDto[] = [];
+    let data:ArticleDto[] = [];    
 
     try {
         const res = await getUserArticles(0, defaultLimit, excludedSources);
