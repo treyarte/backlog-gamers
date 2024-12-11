@@ -12,6 +12,10 @@ export const toggleLikeArticle = async (articleId:string, isLiked:boolean) => {
     try {
         const userId = await getAuthUserId();
 
+        if(!userId) {
+            new Error("Unauthorized")
+        }
+
         if(isLiked) {
             await prisma.like.delete({
                 where: {

@@ -71,7 +71,8 @@ export default function LikeButton({articleId, hasLiked}:Props) {
         try {
             
             if(status === "unauthenticated") {
-                onOpen();
+                // onOpen();
+                toast.info("Please login to like an article");
                 return;
             }
 
@@ -121,7 +122,7 @@ export default function LikeButton({articleId, hasLiked}:Props) {
                 ))}
             </span>
         </button>
-        <Modal
+        {/* <Modal
             isOpen={isOpen}
             onOpenChange={onOpenChange}
             placement="center"
@@ -138,7 +139,7 @@ export default function LikeButton({articleId, hasLiked}:Props) {
             </BlgContainer>
             </ModalBody>
                 </ModalContent>
-        </Modal>
+        </Modal> */}
         </div>
     )
 }

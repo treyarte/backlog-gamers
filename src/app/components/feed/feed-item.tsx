@@ -36,7 +36,7 @@ export default function FeedItem(props:propsType) {
 
     const userId = useSession();
     
-    const {isLoginOpen, setIsLoginOpen} = useState(false);
+    const [isLoginOpen, setIsLoginOpen] = useState(false);
 
     const displaySiteName = ():articleSiteType => {
         const siteEnum:articleSitesEnum = parseInt(`${article.articleSite}`);
@@ -119,7 +119,7 @@ export default function FeedItem(props:propsType) {
                 </div>
             </div>
         </article>
-        <LoginModal isOpenDefault={isLoginOpen}/>
+        {/* <LoginModal isOpenDefault={isLoginOpen}/> */}
         </>
     )
 }
