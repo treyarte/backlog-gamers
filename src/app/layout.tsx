@@ -18,8 +18,8 @@ const roboto = Roboto({
 
  const metadata: Metadata = {
   title: {
-    template: `Backlog Gamers | %s`,
-    default: 'Backlog Gamers'
+    template: `Feed It Games | %s`,
+    default: 'Feed It Games'
   }, 
   description: 'Stay up-to-date on the latest gaming news with an aggregated news feed',
   robots: {
@@ -33,10 +33,10 @@ const roboto = Roboto({
     },
   },
   openGraph: {
-    title: 'Backlog Gamers',
+    title: 'Feed It Games',
     description: 'Stay up-to-date on the latest gaming news with our aggregated news feed.',
     url: 'https://backloggamers.com',
-    siteName: 'Backlog Gamers',
+    siteName: 'Feed It Games',
     // images: [
     //   {
     //     url: 'https://nextjs.org/og.png',
@@ -55,10 +55,10 @@ const roboto = Roboto({
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Backlog Gamers',
+    title: 'Feed It Games',
     description: 'Stay up-to-date on the latest gaming news with our aggregated news feed.',
     siteId: '',
-    creator: '@BacklogXGamers',
+    creator: '@feeditgames',
     creatorId: '',
     // images: ['https://nextjs.org/og.png'],
   }

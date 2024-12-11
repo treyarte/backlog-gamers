@@ -42,12 +42,12 @@ export default function Nav({session}:Props) {
                 </Link>
             </div>
           <ul className='hidden md:flex text-base lg:text-xl gap-5 2xl:gap-10'>
-            <li>
+            {/* <li>
               <Link href='/feed'>
                 <span className='mobile-display'>Feed</span>
                 <span className='desktop-display'>News Feed</span>
               </Link>
-            </li>
+            </li> */}
             {/* <li>
               <Link href='#experience'>
                 <span className='mobile-display'>Upcoming</span>
