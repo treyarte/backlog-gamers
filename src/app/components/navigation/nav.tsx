@@ -25,7 +25,7 @@ export default function Nav({session}:Props) {
     return (
       <>
         {/* <nav className={styles.nav}> */}
-        <nav className={`z-10 h-20 w-full sticky top-0 flex items-center 
+        <nav className={`z-10 h-24 w-full sticky top-0 flex items-center 
                      justify-between px-3 md:px-12 2xl:px-28 bg-zinc-800 
                      backdrop-filter backdrop-blur-lg bg-opacity-30 transition-opacity`}
         >

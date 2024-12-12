@@ -3,22 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --navbar-height:80px;
-  --zinc-dark:rgb(39 39 42);
-  --zinc-dark-hover:rgb(47, 47, 51);
-  --portfolio-orange: #FF8551;
+  --navbar-height: 96px;
+  --zinc-dark: rgb(39 39 42);
+  --zinc-dark-hover: rgb(47, 47, 51);
+  --portfolio-orange: #ff8551;
   /* --bg-background: #171717;   */
   /* --bg-background: #212121;   */
-  --bg-background: #0C0F1D;  
+  --bg-background: #0c0f1d;
   /* --bg-main: #7289da; */
-  --bg-main: #3F97E9;
+  --bg-main: #3f97e9;
   --bg-main-hover: #519fe9;
-  --lesser-text-color:#9e9e9e;
-  --link-color:#fff;
+  --lesser-text-color: #9e9e9e;
+  --link-color: #fff;
   /* --error-text:#d32f2f; */
-  --error-text:#FF6969;
-  --default-border:#B4B4B8;
-  --main-text-color:#fff;
+  --error-text: #ff6969;
+  --default-border: #b4b4b8;
+  --main-text-color: #fff;
   --full-height: calc(100vh - var(--navbar-height));
   --navbar-color: #000;
 }
@@ -35,7 +35,7 @@ d21cd6 redish thing
 next-route-announcer div {
   margin: 0 !important;
 }
-[data-overlay-container=true] {
+[data-overlay-container='true'] {
   height: 100%;
   width: 100%;
 }
@@ -54,21 +54,21 @@ html,
 body {
   max-width: 100vw;
   /* overflow-x: hidden;   */
-  font-size: 1rem;  
+  font-size: 1rem;
   color: var(--main-text-color);
   scroll-behavior: smooth;
 }
-  html,
-  body {
-    /* height: 100%; */
-  }
+html,
+body {
+  /* height: 100%; */
+}
 
-  main {
-    /* height: calc(100vh - var(--navbar-height)) */
-  }
+main {
+  /* height: calc(100vh - var(--navbar-height)) */
+}
 
 .page-layout {
-  max-width: 1280px;  
+  max-width: 1280px;
   margin: 0 auto;
 }
 
@@ -76,38 +76,38 @@ body {
   background-color: var(--bg-background);
 }
 
-a, 
-.h1-dark, 
+a,
+.h1-dark,
 .h2-bg,
 .h3-dark,
 h1,
 h2,
-h3
- {
-  color:var(--main-text-color);
+h3 {
+  color: var(--main-text-color);
 }
 
 h1 {
   font-weight: 600;
-  font-size: 1.875rem; /* 30px */;
-  line-height: 2.25rem; /* 36px */;
+  font-size: 1.875rem; /* 30px */
+  line-height: 2.25rem; /* 36px */
 }
 
 button {
   cursor: pointer;
 }
 
-
-
-.h1-dark, h1 {
-	/* font-size: 2rem;	 */
+.h1-dark,
+h1 {
+  /* font-size: 2rem;	 */
 }
 
-.h2-bg, h2 {
+.h2-bg,
+h2 {
   font-size: 1.7rem;
 }
 
-.h3-dark, h3 {
+.h3-dark,
+h3 {
   font-size: 1.5rem;
 }
 
@@ -115,28 +115,43 @@ button {
   color: #fff;
   font-size: 1.2rem;
   background-color: var(--bg-main);
-  background: rgb(223,95,73);
-background: linear-gradient(90deg, rgba(223,95,73,1) 0%, rgba(252,131,94,1) 50%, rgba(252,145,104,1) 100%);
+  background: rgb(223, 95, 73);
+  background: linear-gradient(
+    90deg,
+    rgba(223, 95, 73, 1) 0%,
+    rgba(252, 131, 94, 1) 50%,
+    rgba(252, 145, 104, 1) 100%
+  );
   width: 300px;
   padding: 10px;
-  
+
   border: none;
   border-radius: 7px;
   background: hsla(132, 79%, 68%, 1);
 
-  background: linear-gradient(90deg, hsla(132, 79%, 68%, 1) 0%, hsla(101, 62%, 48%, 1) 100%);
-  
-  background: -moz-linear-gradient(90deg, hsla(132, 79%, 68%, 1) 0%, hsla(101, 62%, 48%, 1) 100%);
-  
-  background: -webkit-linear-gradient(90deg, hsla(132, 79%, 68%, 1) 0%, hsla(101, 62%, 48%, 1) 100%);
-  
+  background: linear-gradient(
+    90deg,
+    hsla(132, 79%, 68%, 1) 0%,
+    hsla(101, 62%, 48%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(132, 79%, 68%, 1) 0%,
+    hsla(101, 62%, 48%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(132, 79%, 68%, 1) 0%,
+    hsla(101, 62%, 48%, 1) 100%
+  );
+
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#6EEE87", endColorstr="#5FC52E", GradientType=1 );
-  
-  }
-  
+}
+
 .btn-blg:hover {
   background-color: var(--bg-main-hover);
-  
 }
 
 .btn-no-style {
@@ -149,7 +164,7 @@ background: linear-gradient(90deg, rgba(223,95,73,1) 0%, rgba(252,131,94,1) 50%,
   background-color: transparent;
   border: none;
   padding: 0;
-  color:#fff;
+  color: #fff;
 }
 
 .link-no-style {
@@ -158,7 +173,7 @@ background: linear-gradient(90deg, rgba(223,95,73,1) 0%, rgba(252,131,94,1) 50%,
 }
 
 .mobile-display {
-  display:initial;
+  display: initial;
 }
 
 .desktop-display {
@@ -181,14 +196,14 @@ background: linear-gradient(90deg, rgba(223,95,73,1) 0%, rgba(252,131,94,1) 50%,
   min-height: 24px;
   display: flex;
   align-items: center;
-  color:var(--error-text);
+  color: var(--error-text);
 }
 
 @media only screen and (min-width: 1331px) {
   main {
     /* padding: 0 40px; */
   }
-  
+
   .mobile-display {
     display: none;
   }
@@ -197,4 +212,3 @@ background: linear-gradient(90deg, rgba(223,95,73,1) 0%, rgba(252,131,94,1) 50%,
     display: initial;
   }
 }
-
